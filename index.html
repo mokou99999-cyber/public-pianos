@@ -144,12 +144,13 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-si
 .card .dist{color:var(--felt);font-weight:600}
 .card.flash{animation:flash 1.8s ease-out}
 @keyframes flash{from{background:var(--gB-bg)}to{background:transparent}}
-.visits{text-transform:none;letter-spacing:.02em;margin-left:6px}
+.counts .vis{display:inline-flex;align-items:baseline;padding:4px 0 4px 16px;border-left:2px solid var(--felt);color:var(--felt);font-weight:500}
+.counts .vis b{color:var(--felt)}
 </style>
 
 <div class="wrap">
 <div class="topbar">
-  <div class="eyebrow">Public Piano Map · Thailand <a class="by" href="https://www.threads.com/@doc_isu" target="_blank" rel="noopener" title="Threads @doc_isu">by Chin</a><span class="visits" id="visits" hidden></span></div>
+  <div class="eyebrow">Public Piano Map · Thailand <a class="by" href="https://www.threads.com/@doc_isu" target="_blank" rel="noopener" title="Threads @doc_isu">by Chin</a></div>
   <div class="lang" id="lang" role="group" aria-label="Language">
     <button type="button" data-l="th" class="main">ไทย</button><button type="button" data-l="en">EN</button><button type="button" data-l="zh">中文</button><button type="button" data-l="ja">日本語</button><button type="button" data-l="ko">한국어</button>
   </div>
@@ -355,7 +356,7 @@ function renderText(){
   q("#counts").innerHTML=["S","A","B","C","U"].map(g=>`<button type="button" data-g="${g}"><b>${c[g]}</b>${g==="U"?t.U:t.grade(g)}</button>`).join("");
   q("#q").placeholder=t.search; q("#empty").textContent=t.none; q("#fab").textContent=t.report;
   const v=U2(); q("#seg").children[0].textContent=v.list; q("#seg").children[1].textContent=v.mapv; q("#near").textContent=v.near;
-  if(state.visits){ q("#visits").hidden=false; q("#visits").textContent="· "+v.visits(state.visits); }
+  if(state.visits) q("#counts").insertAdjacentHTML("beforeend",`<span class="vis"><b>${state.visits}</b>${v.visits}</span>`);
   document.querySelectorAll("#lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.l===state.lang));
 }
 
@@ -418,11 +419,11 @@ function renderZones(){
 // ── 지도 탭·내 주변 (GitHub 사이트에서만. claude.ai 미리보기는 바깥 지도·위치를 막는다)
 const LIVE = /github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname);
 const UI2 = {
- ko:{list:'목록',mapv:'지도',near:'📍 내 주변',locating:'위치 확인 중…',locErr:'위치를 가져오지 못했습니다. 브라우저에서 위치 권한을 허용해 주세요.',more:'목록에서 보기',visits:n=>'누적 방문 '+n},
- en:{list:'List',mapv:'Map',near:'📍 Near me',locating:'Finding you…',locErr:'Could not get your location. Please allow location access in your browser.',more:'Show in list',visits:n=>n+' visits'},
- th:{list:'รายการ',mapv:'แผนที่',near:'📍 ใกล้ฉัน',locating:'กำลังหาตำแหน่ง…',locErr:'หาตำแหน่งไม่ได้ กรุณาอนุญาตการเข้าถึงตำแหน่งในเบราว์เซอร์',more:'ดูในรายการ',visits:n=>'ผู้เข้าชม '+n},
- zh:{list:'列表',mapv:'地图',near:'📍 附近',locating:'正在定位…',locErr:'无法获取位置，请在浏览器中允许位置权限。',more:'在列表中查看',visits:n=>'累计访问 '+n},
- ja:{list:'リスト',mapv:'地図',near:'📍 現在地の近く',locating:'位置を確認中…',locErr:'位置を取得できませんでした。ブラウザで位置情報を許可してください。',more:'リストで見る',visits:n=>'累計訪問 '+n},
+ ko:{list:'목록',mapv:'지도',near:'📍 내 주변',locating:'위치 확인 중…',locErr:'위치를 가져오지 못했습니다. 브라우저에서 위치 권한을 허용해 주세요.',more:'목록에서 보기',visits:'누적 방문'},
+ en:{list:'List',mapv:'Map',near:'📍 Near me',locating:'Finding you…',locErr:'Could not get your location. Please allow location access in your browser.',more:'Show in list',visits:'visits'},
+ th:{list:'รายการ',mapv:'แผนที่',near:'📍 ใกล้ฉัน',locating:'กำลังหาตำแหน่ง…',locErr:'หาตำแหน่งไม่ได้ กรุณาอนุญาตการเข้าถึงตำแหน่งในเบราว์เซอร์',more:'ดูในรายการ',visits:'ผู้เข้าชม'},
+ zh:{list:'列表',mapv:'地图',near:'📍 附近',locating:'正在定位…',locErr:'无法获取位置，请在浏览器中允许位置权限。',more:'在列表中查看',visits:'累计访问'},
+ ja:{list:'リスト',mapv:'地図',near:'📍 現在地の近く',locating:'位置を確認中…',locErr:'位置を取得できませんでした。ブラウザで位置情報を許可してください。',more:'リストで見る',visits:'累計訪問'},
 };
 const U2 = () => UI2[state.lang];
 const dist = p => { if(!state.me) return 0; const r=x=>x*Math.PI/180, dLa=r(p[7]-state.me.lat), dLo=r(p[8]-state.me.lng);
@@ -491,7 +492,9 @@ if(GC_CODE && location.hostname.endsWith("github.io")){
   const g=document.createElement("script"); g.async=true; g.src="https://gc.zgo.at/count.js"; g.dataset.goatcounter=`https://${GC_CODE}.goatcounter.com/count`; document.body.appendChild(g);
   fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`).then(r=>r.ok?r.json():null).then(j=>{
     const n=j ? GC_BASE + +String(j.count).replace(/\D/g,"") : 0;
-    if(n>=GC_MIN){ state.visits=n.toLocaleString("en-US"); renderText(); } }).catch(()=>{});
+    if(n<GC_MIN) return; const t0=performance.now();
+    const step=now=>{ const k=Math.min(1,(now-t0)/900); state.visits=Math.round(n*(1-(1-k)**3)).toLocaleString("en-US"); renderText(); if(k<1) requestAnimationFrame(step); };
+    requestAnimationFrame(step); }).catch(()=>{});
 }
 
 function renderAll(){ renderText(); renderFilters(); renderZones(); renderList(); applyFilter(); }
