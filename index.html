@@ -486,10 +486,12 @@ if(LIVE){
 
 // ── 누적 방문 (GoatCounter). 코드를 넣으면 켜지고, GC_MIN 이상일 때만 보인다
 const GC_CODE = "", GC_MIN = 300;
+const GC_BASE = 1340;   // GoatCounter 시작 전 Cloudflare 누적 방문 — 시작일 기준 숫자로 맞출 것
 if(GC_CODE && location.hostname.endsWith("github.io")){
   const g=document.createElement("script"); g.async=true; g.src="https://gc.zgo.at/count.js"; g.dataset.goatcounter=`https://${GC_CODE}.goatcounter.com/count`; document.body.appendChild(g);
   fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`).then(r=>r.ok?r.json():null).then(j=>{
-    if(j && +String(j.count).replace(/\D/g,"")>=GC_MIN){ state.visits=j.count; renderText(); } }).catch(()=>{});
+    const n=j ? GC_BASE + +String(j.count).replace(/\D/g,"") : 0;
+    if(n>=GC_MIN){ state.visits=n.toLocaleString("en-US"); renderText(); } }).catch(()=>{});
 }
 
 function renderAll(){ renderText(); renderFilters(); renderZones(); renderList(); applyFilter(); }
