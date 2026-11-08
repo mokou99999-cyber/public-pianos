@@ -146,6 +146,13 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-si
 @keyframes flash{from{background:var(--gB-bg)}to{background:transparent}}
 .counts .vis{display:inline-flex;align-items:baseline;padding:4px 0 4px 16px;border-left:2px solid var(--felt);color:var(--felt);font-weight:500}
 .counts .vis b{color:var(--felt)}
+.news{margin:10px 0 2px;padding:8px 12px;border:1px solid #e3dccf;border-radius:10px;background:#fbf8f2;font-size:.92rem}
+.news summary{cursor:pointer;font-weight:600}
+.news p{margin:6px 0 0;line-height:1.5}
+.news .newsnote{color:#6b6257;font-size:.86rem}
+.card .new{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;background:#c8102e;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.04em;vertical-align:middle}
+.chip[data-v="new"]{border-color:#c8102e;color:#c8102e}
+.chip[data-v="new"][aria-pressed="true"]{background:#c8102e;color:#fff}
 </style>
 
 <div class="wrap">
@@ -165,6 +172,7 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-si
 
 <div class="zones" id="zones" role="group"></div>
 <p class="plotnote" id="plotnote"></p>
+<details class="news" id="news"><summary id="newsh"></summary><p id="newsb"></p><p class="newsnote" id="newsn"></p></details>
 
 <div class="bar" id="bar">
   <div class="srow"><input type="search" id="q" autocomplete="off"><span class="rcount" id="rcount"></span></div>
@@ -232,6 +240,22 @@ const T = { // 장소 유형
  mall:['복합몰','Mall','ห้าง','商场','ショッピングモール'], office:['오피스 타워','Office tower','อาคารสำนักงาน','写字楼','オフィスビル'], lounge:['호텔 라운지','Hotel lounge','เลานจ์โรงแรม','酒店酒廊','ホテルラウンジ'],
  taiwan:['대만 식당','Taiwanese restaurant','ร้านอาหารไต้หวัน','台湾餐厅','台湾料理店'], hosp:['병원','Hospital','โรงพยาบาล','医院','病院'], book:['서점','Bookshop','ร้านหนังสือ','书店','書店'], culture:['문화공간','Cultural space','พื้นที่วัฒนธรรม','文化空间','カルチャースペース'], market:['푸드몰','Food market','ตลาดอาหาร','美食市集','フードマーケット'], studio:['음악 스튜디오','Music studio','สตูดิโอดนตรี','音乐工作室','音楽スタジオ'], park:['학습공원','Learning park','อุทยานการเรียนรู้','学习公园','ラーニングパーク'], station:['기차역','Railway station','สถานีรถไฟ','火车站','鉄道駅'], airport:['공항','Airport','สนามบิน','机场','空港'], hotel:['호텔','Hotel','โรงแรม','酒店','ホテル'], rent:['유료 연습실(시간제)','Paid practice room (hourly)','ห้องซ้อมให้เช่า (เสียเงิน)','付费练习室（按小时）','有料練習室（時間制）'], member:['유료 회원제 시설','Members-only (paid)','สำหรับสมาชิก (มีค่าสมาชิก)','会员制（收费）','会員制（有料）'], attr:['관광지','Attraction','แหล่งท่องเที่ยว','景点','観光スポット'] };
 const K = { d:['디지털','Digital','ดิจิทัล','电钢琴','電子ピアノ'], g:['그랜드','Grand','แกรนด์','三角钢琴','グランド'], u:['업라이트','Upright','อัพไรท์','立式钢琴','アップライト'], cg:['크리스털 그랜드','Crystal grand','แกรนด์คริสตัล','水晶三角钢琴','クリスタルグランド'], '':['','','','',''] };
+
+const NEWS = { date:"2026-11-08", days:45,
+ names:["Puey Ungphakorn Library","Boonchoo Treethong Library","Orrline Café","30 Oct Coffee & Bar","Seacon Square","Chiang Mai International Airport","Diana Complex","centralwOrld","Grand Mercure Bangkok Atrium","The Athenee Hotel","Sindhorn Kempinski Hotel","Pathumwan Princess Hotel","Samitivej Sukhumvit Hospital","Pullman Bangkok King Power","Peterson Piano Institute","Lumphini Youth Center"],
+ ui:{
+  ko:{h:'최근 추가 · 2026-11-08 · 16곳', b:'태국어 커뮤니티(페이스북·Pantip·Lemon8·Wongnai)와 구글맵 리뷰를 다시 훑어 넣었습니다. 자유 연주 A 3곳(탐마삿 랑싯·람빵 도서관, Orrline Café), 조건부 B 4곳, 연주자용 C 6곳, 미확정 1곳, 그리고 유료 2곳(연습실 대여·회원제 — 유료라고 따로 적었습니다).',
+      n:'이번에 확인하고 넣지 않은 곳: 방콕 호텔 150곳·병원 56곳·시립 청소년센터와 도서관 80곳의 구글 리뷰를 모두 봤지만, 손님이 칠 수 있는 피아노는 없었습니다. 호텔 로비 피아노는 전부 연주자용입니다.'},
+  en:{h:'Recently added · 2026-11-08 · 16 places', b:'A fresh sweep of Thai communities (Facebook, Pantip, Lemon8, Wongnai) and Google Maps reviews. Free play A ×3 (Thammasat Rangsit and Lampang libraries, Orrline Café), conditional B ×4, performer-only C ×6, unconfirmed ×1, and two PAID places (hourly practice rooms, members-only) marked as paid.',
+      n:'Checked and not added: Google reviews of 150 Bangkok hotels, 56 hospitals and 80 city youth centres and libraries turned up no piano that guests may play. Hotel lobby pianos are all for performers.'},
+  th:{h:'เพิ่มล่าสุด · 8 พ.ย. 2026 · 16 แห่ง', b:'กวาดข้อมูลใหม่จากชุมชนไทย (เฟซบุ๊ก Pantip Lemon8 Wongnai) และรีวิวกูเกิลแมป ได้เล่นอิสระ A 3 แห่ง (หอสมุด มธ. รังสิต–ลำปาง, Orrline Café) แบบมีเงื่อนไข B 4 แห่ง สำหรับนักดนตรี C 6 แห่ง ยังไม่ยืนยัน 1 แห่ง และที่เสียค่าใช้จ่าย 2 แห่ง (ห้องซ้อมรายชั่วโมง, สมาชิก) ซึ่งระบุไว้ชัดว่าเสียเงิน',
+      n:'ตรวจแล้วแต่ไม่ได้เพิ่ม: รีวิวกูเกิลของโรงแรมในกรุงเทพฯ 150 แห่ง โรงพยาบาล 56 แห่ง ศูนย์เยาวชนและห้องสมุด กทม. 80 แห่ง ไม่พบเปียโนที่แขกเล่นได้เลย เปียโนล็อบบี้โรงแรมเป็นของนักดนตรีทั้งหมด'},
+  zh:{h:'最新添加 · 2026-11-08 · 16 处', b:'重新梳理泰国社群（Facebook、Pantip、Lemon8、Wongnai）和谷歌地图评论。自由弹奏 A 3 处（法政大学兰实、南邦图书馆，Orrline Café），有条件 B 4 处，演奏者专用 C 6 处，未确认 1 处，另有 2 处收费场所（按小时练习室、会员制）已标明收费。',
+      n:'已核查但未添加：曼谷 150 家酒店、56 家医院、80 处市立青少年中心和图书馆的谷歌评论中，没有一处可供客人弹奏。酒店大堂钢琴全部为演奏者专用。'},
+  ja:{h:'最近の追加 · 2026-11-08 · 16か所', b:'タイのコミュニティ（Facebook・Pantip・Lemon8・Wongnai）とGoogleマップのレビューを洗い直しました。自由演奏A 3か所（タマサート大ランシット・ランパーン図書館、Orrline Café）、条件付きB 4か所、奏者用C 6か所、未確認1か所、有料2か所（時間制練習室・会員制、有料と明記）。',
+      n:'確認したが載せなかった所：バンコクのホテル150・病院56・都の青少年センターと図書館80か所のGoogleレビューに、客が弾けるピアノはありませんでした。ホテルロビーのピアノはすべて奏者用です。'}
+ }};
+const isNew = p => NEWS.names.includes(p[1]) && (Date.now()-new Date(NEWS.date).getTime()) < NEWS.days*864e5;
 // [등급, 이름, 부제, 지역, 유형키, 피아노키, 근거연도, 위도, 경도, [ko, en, th]]
 const P = [
  ["S","One Bangkok","Parade G · The Storeys 1F","Bangkok · Pathum Wan","mall","cg",2026,13.72705,100.54725,["크리스털 그랜드 2대. Parade 동 G층과 The Storeys 1층(Jim Thompson 앞). 누구나 치고, 지나가는 청중이 늘 있습니다. 방콕 최고의 무대. 2026년 11월에도 직접 쳐 봤습니다.","Two crystal grands: Parade G floor and The Storeys 1F (by Jim Thompson). Anyone can play, and there is always a passing crowd. The best stage in Bangkok. Played it in person again in November 2026.","แกรนด์คริสตัล 2 หลัง ที่ชั้น G โซน Parade และชั้น 1 The Storeys (หน้า Jim Thompson) ใครก็เล่นได้ และมีคนเดินผ่านฟังตลอด เวทีที่ดีที่สุดในกรุงเทพฯ เดือนพฤศจิกายน 2026 ไปเล่นมาด้วยตัวเองอีกครั้ง","两架水晶三角钢琴：Parade 楼 G 层和 The Storeys 1 层（Jim Thompson 前）。任何人都能弹，随时有路过的听众。曼谷最好的舞台。 2026 年 11 月也亲自弹过。","クリスタルのグランドが2台。Parade 棟G階と The Storeys 1階（Jim Thompson 前）。誰でも弾けて、通りすがりの聴衆が絶えません。バンコク最高のステージ。 2026年11月にも実際に弾いてきました。"],["img/one-bangkok-t.jpg","img/one-bangkok.jpg","Chin"]],
@@ -366,6 +390,7 @@ function renderText(){
   document.documentElement.lang = state.lang;
   q("#h1").innerHTML=t.h1; q("#lede").textContent=t.lede; q("#call").textContent=t.call;
   q("#ch").textContent=t.ch; q("#cp").textContent=t.cp; q("#cl").innerHTML=[...new Set(P.map(p=>p[11]).filter(Boolean))].map(n=>`<li>${linkify(n)}</li>`).join(""); q("#plotnote").textContent=t.plotnote;
+  { const nu=NEWS.ui[state.lang]||NEWS.ui.en; const show=P.some(isNew); q("#news").hidden=!show; q("#newsh").textContent=nu.h; q("#newsb").textContent=nu.b; q("#newsn").textContent=nu.n; }
   q("#f1").textContent=t.f1; q("#f2").textContent=t.f2; q("#f3").innerHTML=t.f3; q("#f4").textContent=t.f4;
   q("#legend").innerHTML=["S","A","B","C","U"].map(g=>`<li><span class="tag ${g}">${GL[g]}</span><span>${t.legend[g]}</span></li>`).join("");
   const c={S:0,A:0,B:0,C:0,U:0}; P.forEach(p=>c[p[0]]++);
@@ -379,17 +404,17 @@ function renderText(){
 function renderFilters(){
   const t=u(), f=q("#filters");
   const mk=(k,v,label)=>`<button class="chip" type="button" data-k="${k}" data-v="${v}" aria-pressed="${state[k]===v}">${label}</button>`;
-  f.innerHTML = mk("grade","all",t.all)+mk("grade","S","S")+mk("grade","A","A")+mk("grade","B","B")+mk("grade","C","C")+mk("grade","U",t.U)
+  f.innerHTML = mk("grade","all",t.all)+mk("grade","S","S")+mk("grade","A","A")+mk("grade","B","B")+mk("grade","C","C")+mk("grade","U",t.U)+(P.some(isNew)?mk("grade","new","NEW"):"")
     +`<button class="chip zreset" type="button" data-k="zone" data-v="all" ${state.zone==="all"?"hidden":""}>← ${t.allR}</button>`;
 }
 
 function renderList(){
   const t=u(), i=li();
   q("#list").innerHTML = (state.me?[...P].sort((a,b)=>dist(a)-dist(b)):P).map(p=>`
-  <article class="card" id="c${P.indexOf(p)}" data-g="${p[0]}" data-z="${zoneOf(p)}" data-s="${[p[1],p[2],p[3],ZONES.find(z=>z[0]===zoneOf(p))[1].join(" "),T[p[4]].join(" "),p[9].join(" ")].join(" ").toLowerCase().replace(/"/g,"")}">
+  <article class="card" id="c${P.indexOf(p)}" data-g="${p[0]}" data-new="${isNew(p)?1:0}" data-z="${zoneOf(p)}" data-s="${[p[1],p[2],p[3],ZONES.find(z=>z[0]===zoneOf(p))[1].join(" "),T[p[4]].join(" "),p[9].join(" ")].join(" ").toLowerCase().replace(/"/g,"")}">
     <span class="tag ${p[0]}">${GL[p[0]]}</span>
     <div>
-      <h2 class="name">${p[1]}${p[2]?`<span class="th">${p[2]}</span>`:""}</h2>
+      <h2 class="name">${p[1]}${isNew(p)?'<span class="new">NEW</span>':""}${p[2]?`<span class="th">${p[2]}</span>`:""}</h2>
       <p class="meta">${state.me?`<span class="dist">${km(p)}</span> · `:""}<span class="gw ${p[0]}">${t.gword[p[0]]}</span> · ${p[3]} · ${T[p[4]][i]}${p[5]?" · "+K[p[5]][i]:""} · ${p[6]?t.seen+p[6]:t.noyear}</p>
       <a class="map-m" href="${gmaps(p)}" target="_blank" rel="noopener">${t.map}</a>
       <p class="verdict">${p[9][i]}</p>
@@ -401,14 +426,14 @@ function renderList(){
 
 function applyFilter(){
   const needle=state.q.trim().toLowerCase();
-  const ok=el=>(state.grade==="all"||el.dataset.g===state.grade)&&(state.zone==="all"||el.dataset.z===state.zone)&&(!needle||el.dataset.s.includes(needle));
+  const ok=el=>(state.grade==="all"||(state.grade==="new"?el.dataset.new==="1":el.dataset.g===state.grade))&&(state.zone==="all"||el.dataset.z===state.zone)&&(!needle||el.dataset.s.includes(needle));
   let shown=0; document.querySelectorAll(".card").forEach(el=>{ const v=ok(el); el.classList.toggle("hide",!v); if(v) shown++; });
   q("#empty").hidden = shown>0; q("#rcount").textContent=u().results(shown);
   const zr=q(".zreset"); if(zr){ zr.hidden = state.zone==="all"; }
   renderMarkers();
   document.querySelectorAll(".zone").forEach(el=>{
     el.setAttribute("aria-pressed", state.zone===el.dataset.z);
-    el.querySelectorAll(".zk .w[data-g]").forEach(d=>d.style.opacity=(state.grade==="all"||d.dataset.g===state.grade)?1:.25);
+    el.querySelectorAll(".zk .w[data-g]").forEach(d=>d.style.opacity=(state.grade==="all"||state.grade==="new"||d.dataset.g===state.grade)?1:.25);
   });
 }
 
