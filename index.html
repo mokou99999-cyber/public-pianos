@@ -172,7 +172,7 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-si
 
 <div class="zones" id="zones" role="group"></div>
 <p class="plotnote" id="plotnote"></p>
-<details class="news" id="news"><summary id="newsh"></summary><p id="newsb"></p><p class="newsnote" id="newsn"></p></details>
+<details class="news" id="news"><summary id="newsh"></summary><p id="newsb"></p><p class="newsnote" id="newsn"></p><p class="newsnote" id="newss"></p></details>
 
 <div class="bar" id="bar">
   <div class="srow"><input type="search" id="q" autocomplete="off"><span class="rcount" id="rcount"></span></div>
@@ -245,15 +245,15 @@ const NEWS = { date:"2026-11-08", days:45,
  names:["Puey Ungphakorn Library","Boonchoo Treethong Library","Orrline Café","30 Oct Coffee & Bar","Seacon Square","Chiang Mai International Airport","Diana Complex","centralwOrld","Grand Mercure Bangkok Atrium","The Athenee Hotel","Sindhorn Kempinski Hotel","Pathumwan Princess Hotel","Samitivej Sukhumvit Hospital","Pullman Bangkok King Power","Peterson Piano Institute","Lumphini Youth Center","Vigie Sist Cafe","Sol-Fa Cafe'","Baan 104","Royal Phuket City Hotel","Ya Nui Beach piano"],
  ui:{
   ko:{h:'최근 추가 · 2026-11-08 · 21곳', b:'태국어 커뮤니티(페이스북·Pantip·Lemon8·Wongnai)와 구글맵 리뷰를 다시 훑어 넣었습니다. 자유 연주 A 3곳(탐마삿 랑싯·람빵 도서관, Orrline Café), 조건부 B 4곳, 연주자용 C 6곳, 미확정 1곳, 유료 2곳(연습실 대여·회원제 — 유료라고 따로 적었습니다), 그리고 지방 5곳(치앙마이 2·나콘사완·푸껫 2).',
-      n:'이번에 확인하고 넣지 않은 곳: 방콕 호텔 150곳·병원 56곳·시립 청소년센터와 도서관 80곳의 구글 리뷰를 모두 봤지만, 손님이 칠 수 있는 피아노는 없었습니다. 호텔 로비 피아노는 전부 연주자용입니다.'},
+      n:'이번에 확인하고 넣지 않은 곳: 방콕 호텔 150곳·병원 56곳·시립 청소년센터와 도서관 80곳의 구글 리뷰를 모두 봤지만, 손님이 칠 수 있는 피아노는 없었습니다. 호텔 로비 피아노는 전부 연주자용입니다.', s:"이번 색출 범위(2026-11-08): ① 태국어 커뮤니티 — Lemon8 14회·TikTok 10회·페이스북 공개 글 10회·Pantip 9회+자체검색 61스레드·Wongnai/Trip.com 7회 → 신규 8곳(Lemon8가 대부분). ② 일본어·중국어·한국어 블로그와 업계(Steinway·Yamaha·조율사) → 신규 0. ③ 구글맵 리뷰에서 'piano/เปียโน' 검색 — 방콕 호텔 150·병원 56·대학·몰·문화시설 58·시립 청소년센터와 도서관 80곳 → 손님이 칠 수 있는 곳 0(호텔 로비는 전부 연주자용, 2곳은 손님 연주 거절 기록). ④ OpenStreetMap 공공피아노 태그 태국 전체 0."},
   en:{h:'Recently added · 2026-11-08 · 21 places', b:'A fresh sweep of Thai communities (Facebook, Pantip, Lemon8, Wongnai) and Google Maps reviews. Free play A ×3 (Thammasat Rangsit and Lampang libraries, Orrline Café), conditional B ×4, performer-only C ×6, unconfirmed ×1, two PAID places (hourly practice rooms, members-only) marked as paid, and five provincial spots (Chiang Mai ×2, Nakhon Sawan, Phuket ×2).',
-      n:'Checked and not added: Google reviews of 150 Bangkok hotels, 56 hospitals and 80 city youth centres and libraries turned up no piano that guests may play. Hotel lobby pianos are all for performers.'},
+      n:'Checked and not added: Google reviews of 150 Bangkok hotels, 56 hospitals and 80 city youth centres and libraries turned up no piano that guests may play. Hotel lobby pianos are all for performers.', s:"Scope of this sweep (2026-11-08): ① Thai communities — Lemon8 ×14, TikTok ×10, public Facebook posts ×10, Pantip ×9 plus 61 threads via its own search, Wongnai/Trip.com ×7 → 8 new places (mostly from Lemon8). ② Japanese, Chinese and Korean blogs and the trade (Steinway, Yamaha, tuners) → none. ③ Google Maps reviews searched for 'piano/เปียโน' at 150 Bangkok hotels, 56 hospitals, 58 universities/malls/cultural venues and 80 city youth centres and libraries → no piano guests may play (hotel lobby pianos are all for performers; two hotels have records of refusing guests). ④ OpenStreetMap public-piano tags across Thailand: 0."},
   th:{h:'เพิ่มล่าสุด · 8 พ.ย. 2026 · 21 แห่ง', b:'กวาดข้อมูลใหม่จากชุมชนไทย (เฟซบุ๊ก Pantip Lemon8 Wongnai) และรีวิวกูเกิลแมป ได้เล่นอิสระ A 3 แห่ง (หอสมุด มธ. รังสิต–ลำปาง, Orrline Café) แบบมีเงื่อนไข B 4 แห่ง สำหรับนักดนตรี C 6 แห่ง ยังไม่ยืนยัน 1 แห่ง ที่เสียค่าใช้จ่าย 2 แห่ง (ห้องซ้อมรายชั่วโมง, สมาชิก) ซึ่งระบุไว้ชัดว่าเสียเงิน และต่างจังหวัด 5 แห่ง (เชียงใหม่ 2 นครสวรรค์ ภูเก็ต 2)',
-      n:'ตรวจแล้วแต่ไม่ได้เพิ่ม: รีวิวกูเกิลของโรงแรมในกรุงเทพฯ 150 แห่ง โรงพยาบาล 56 แห่ง ศูนย์เยาวชนและห้องสมุด กทม. 80 แห่ง ไม่พบเปียโนที่แขกเล่นได้เลย เปียโนล็อบบี้โรงแรมเป็นของนักดนตรีทั้งหมด'},
+      n:'ตรวจแล้วแต่ไม่ได้เพิ่ม: รีวิวกูเกิลของโรงแรมในกรุงเทพฯ 150 แห่ง โรงพยาบาล 56 แห่ง ศูนย์เยาวชนและห้องสมุด กทม. 80 แห่ง ไม่พบเปียโนที่แขกเล่นได้เลย เปียโนล็อบบี้โรงแรมเป็นของนักดนตรีทั้งหมด', s:"ขอบเขตการค้นรอบนี้ (8 พ.ย. 2026): ① ชุมชนไทย — Lemon8 14 ครั้ง TikTok 10 เฟซบุ๊กโพสต์สาธารณะ 10 Pantip 9 บวกค้นในเว็บเอง 61 กระทู้ Wongnai/Trip.com 7 → ได้ใหม่ 8 แห่ง (ส่วนใหญ่จาก Lemon8) ② บล็อกญี่ปุ่น จีน เกาหลี และวงการ (Steinway Yamaha ช่างจูน) → ไม่พบ ③ ค้นคำว่า piano/เปียโน ในรีวิวกูเกิลแมปของโรงแรมกรุงเทพฯ 150 โรงพยาบาล 56 มหาวิทยาลัย/ห้าง/ศูนย์วัฒนธรรม 58 ศูนย์เยาวชนและห้องสมุด กทม. 80 แห่ง → ไม่มีที่แขกเล่นได้ (เปียโนล็อบบี้โรงแรมเป็นของนักดนตรีทั้งหมด 2 แห่งมีบันทึกปฏิเสธแขก) ④ แท็กเปียโนสาธารณะใน OpenStreetMap ทั้งประเทศ 0"},
   zh:{h:'最新添加 · 2026-11-08 · 21 处', b:'重新梳理泰国社群（Facebook、Pantip、Lemon8、Wongnai）和谷歌地图评论。自由弹奏 A 3 处（法政大学兰实、南邦图书馆，Orrline Café），有条件 B 4 处，演奏者专用 C 6 处，未确认 1 处，2 处收费场所（按小时练习室、会员制）已标明收费，另有外府 5 处（清迈 2、北榄坡、普吉 2）。',
-      n:'已核查但未添加：曼谷 150 家酒店、56 家医院、80 处市立青少年中心和图书馆的谷歌评论中，没有一处可供客人弹奏。酒店大堂钢琴全部为演奏者专用。'},
+      n:'已核查但未添加：曼谷 150 家酒店、56 家医院、80 处市立青少年中心和图书馆的谷歌评论中，没有一处可供客人弹奏。酒店大堂钢琴全部为演奏者专用。', s:"本次排查范围（2026-11-08）：① 泰国社群 — Lemon8 14 次、TikTok 10 次、Facebook 公开帖 10 次、Pantip 9 次加站内搜索 61 个帖子、Wongnai/Trip.com 7 次 → 新增 8 处（多来自 Lemon8）。② 日文、中文、韩文博客及业界（Steinway、Yamaha、调音师）→ 无。③ 在谷歌地图评论中搜索“piano/เปียโน”：曼谷 150 家酒店、56 家医院、58 处大学/商场/文化场馆、80 处市立青少年中心和图书馆 → 没有客人可弹的钢琴（酒店大堂钢琴全部为演奏者专用，两家有拒绝客人的记录）。④ OpenStreetMap 公共钢琴标签全泰国 0。"},
   ja:{h:'最近の追加 · 2026-11-08 · 21か所', b:'タイのコミュニティ（Facebook・Pantip・Lemon8・Wongnai）とGoogleマップのレビューを洗い直しました。自由演奏A 3か所（タマサート大ランシット・ランパーン図書館、Orrline Café）、条件付きB 4か所、奏者用C 6か所、未確認1か所、有料2か所（時間制練習室・会員制、有料と明記）、地方5か所（チェンマイ2・ナコーンサワン・プーケット2）。',
-      n:'確認したが載せなかった所：バンコクのホテル150・病院56・都の青少年センターと図書館80か所のGoogleレビューに、客が弾けるピアノはありませんでした。ホテルロビーのピアノはすべて奏者用です。'}
+      n:'確認したが載せなかった所：バンコクのホテル150・病院56・都の青少年センターと図書館80か所のGoogleレビューに、客が弾けるピアノはありませんでした。ホテルロビーのピアノはすべて奏者用です。', s:"今回の調査範囲（2026-11-08）：① タイのコミュニティ — Lemon8 14回・TikTok 10回・Facebook公開投稿10回・Pantip 9回＋サイト内検索61スレッド・Wongnai/Trip.com 7回 → 新規8か所（ほぼLemon8）。② 日本語・中国語・韓国語ブログと業界（Steinway・Yamaha・調律師）→ 0。③ Googleマップのレビューで「piano/เปียโน」を検索 — バンコクのホテル150・病院56・大学/モール/文化施設58・都の青少年センターと図書館80か所 → 客が弾けるピアノは0（ホテルロビーのピアノはすべて奏者用、2軒は客の演奏を断った記録あり）。④ OpenStreetMapの公共ピアノタグはタイ全土で0。"}
  }};
 const isNew = p => NEWS.names.includes(p[1]) && (Date.now()-new Date(NEWS.date).getTime()) < NEWS.days*864e5;
 // [등급, 이름, 부제, 지역, 유형키, 피아노키, 근거연도, 위도, 경도, [ko, en, th]]
@@ -395,7 +395,7 @@ function renderText(){
   document.documentElement.lang = state.lang;
   q("#h1").innerHTML=t.h1; q("#lede").textContent=t.lede; q("#call").textContent=t.call;
   q("#ch").textContent=t.ch; q("#cp").textContent=t.cp; q("#cl").innerHTML=[...new Set(P.map(p=>p[11]).filter(Boolean))].map(n=>`<li>${linkify(n)}</li>`).join(""); q("#plotnote").textContent=t.plotnote;
-  { const nu=NEWS.ui[state.lang]||NEWS.ui.en; const show=P.some(isNew); q("#news").hidden=!show; q("#newsh").textContent=nu.h; q("#newsb").textContent=nu.b; q("#newsn").textContent=nu.n; }
+  { const nu=NEWS.ui[state.lang]||NEWS.ui.en; const show=P.some(isNew); q("#news").hidden=!show; q("#newsh").textContent=nu.h; q("#newsb").textContent=nu.b; q("#newsn").textContent=nu.n; q("#newss").textContent=nu.s||""; }
   q("#f1").textContent=t.f1; q("#f2").textContent=t.f2; q("#f3").innerHTML=t.f3; q("#f4").textContent=t.f4;
   q("#legend").innerHTML=["S","A","B","C","U"].map(g=>`<li><span class="tag ${g}">${GL[g]}</span><span>${t.legend[g]}</span></li>`).join("");
   const c={S:0,A:0,B:0,C:0,U:0}; P.forEach(p=>c[p[0]]++);
