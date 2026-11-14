@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Public Pianos Korea</title>
+<meta name="description" content="Public pianos in Korea, graded on whether you may sit down and play. Free map by Chin.">
+<meta property="og:title" content="Public Pianos Korea">
+<meta property="og:description" content="피아노가 있는 곳을 알려드립니다. 연주자들이여, 사랑과 평화를 퍼뜨리세요.">
+<meta property="og:url" content="https://mokou99999-cyber.github.io/public-pianos/kr/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+:root{
+  --paper:#ECEBE6; --paper-2:#E2E0D9; --ink:#1A1918; --ink-2:#4F4C47; --ink-3:#6B675F;
+  --line:#CFCCC4; --felt:#B23A2E; --brass:#9A742A;
+  --gS:#B23A2E; --gA:#2E6B3E; --gB:#9A742A; --gC:#5A6470; --gU:#8C877F;
+  --gS-bg:#F3DAD6; --gA-bg:#DCEBDF; --gB-bg:#F0E6CC; --gC-bg:#E1E4E8; --gU-bg:#E6E4DF;
+}
+body{background:var(--paper);color-scheme:light;color:var(--ink);font-family:"IBM Plex Sans KR","IBM Plex Sans Thai","Noto Sans SC","Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding-block:28px 64px;padding-inline:20px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.eyebrow .by{font-family:Fraunces,serif;font-style:italic;font-weight:600;text-transform:none;letter-spacing:0;font-size:14px;color:var(--felt);margin-left:6px;text-decoration:none;border-bottom:1px solid transparent}
+.eyebrow .by:hover{border-color:var(--felt)}
+.lang{display:flex;gap:4px}
+.lang button{font:inherit;font-size:13px;letter-spacing:.06em;padding:8px 13px;min-height:36px;border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer;border-radius:3px}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lang button.main{font-size:16px;font-weight:600;padding:8px 18px;border-width:2px;border-color:var(--ink)}
+.lang{flex-wrap:wrap}
+.lang button:focus-visible,.chip:focus-visible{outline:2px solid var(--felt);outline-offset:2px}
+header{display:grid;gap:10px;border-bottom:1px solid var(--line);padding-bottom:22px}
+h1{font-family:Fraunces,"IBM Plex Sans KR","IBM Plex Sans Thai",Georgia,serif;font-weight:300;font-size:clamp(32px,6vw,54px);line-height:1.08;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:italic;font-weight:600;color:var(--felt)}
+:root[lang="th"] h1{font-style:normal;font-weight:400;line-height:1.3}
+:root[lang="th"] h1 em{font-style:normal}
+:root[lang="zh"] h1,:root[lang="ja"] h1{font-weight:500;line-height:1.3}
+:root[lang="zh"] h1 em,:root[lang="ja"] h1 em{font-style:normal}
+:root[lang="ko"] h1{font-weight:400;line-height:1.18}
+:root[lang="ko"] h1 em{font-style:normal}
+:root[lang="ko"] h1,:root[lang="ko"] .lede,:root[lang="ko"] .legend,:root[lang="ko"] .verdict,:root[lang="ko"] .meta,:root[lang="ko"] footer{word-break:keep-all;overflow-wrap:anywhere}
+.lede{max-width:62ch;color:var(--ink-2);margin:0}
+.lede.call{color:var(--ink);font-weight:500;border-left:3px solid var(--felt);padding-left:12px;cursor:pointer}
+.lede.call:hover{color:var(--felt)}
+.counts{display:flex;flex-wrap:wrap;gap:8px 18px;font-variant-numeric:tabular-nums;font-size:14px;margin-top:6px}
+.counts b{font-family:Fraunces,serif;font-weight:600;font-size:22px;margin-right:4px}
+.counts button{font:inherit;background:none;border:0;padding:4px 0;color:var(--ink);cursor:pointer;border-bottom:1px solid transparent}
+.counts button:hover{border-color:var(--ink)}
+.counts button:focus-visible{outline:2px solid var(--felt);outline-offset:2px}
+.legend{display:grid;gap:6px;margin:22px 0 0;padding:0;list-style:none;font-size:14px;color:var(--ink-2)}
+.legend li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:baseline}
+.tag{display:inline-block;font-family:Fraunces,serif;font-weight:600;font-size:13px;line-height:1;padding:5px 0;width:30px;text-align:center;border-radius:3px;border:1px solid currentColor}
+.tag.S{color:var(--gS);background:var(--gS-bg);font-weight:700}.tag.A{color:var(--gA);background:var(--gA-bg)}.tag.B{color:var(--gB);background:var(--gB-bg)}
+.tag.C{color:var(--gC);background:var(--gC-bg)}.tag.U{color:var(--gU);background:var(--gU-bg);border-style:dashed}
+.chip.zreset{border-color:var(--ink);color:var(--ink);font-weight:500}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0 8px}
+.zone{font:inherit;text-align:left;display:grid;gap:8px;padding:14px 14px 12px;border:1px solid var(--line);background:var(--paper-2);border-radius:4px;color:var(--ink);cursor:pointer;min-width:0}
+.zone:hover{border-color:var(--ink-3)}
+.zone[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.zone:focus-visible{outline:2px solid var(--felt);outline-offset:2px}
+.zone .zn{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);line-height:1.3}
+.zone .zc{font-family:Fraunces,serif;font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.zone .zk{display:block;width:100%;height:auto;margin-top:4px}
+.zone .zk .w{fill:#F7F5EF;stroke:var(--line);stroke-width:.6}
+.zone .zk .w.S{fill:var(--gS)}.zone .zk .w.A{fill:var(--gA)}.zone .zk .w.B{fill:var(--gB)}.zone .zk .w.C{fill:var(--gC)}
+.zone .zk .w.U{fill:#F7F5EF;stroke:var(--gU);stroke-dasharray:1.5 1.2;stroke-width:1}
+.zone .zk .b{fill:var(--ink)}
+@media (max-width:640px){.zones{grid-template-columns:repeat(2,1fr);gap:8px}.zone{padding:12px 12px 10px}.zone .zc{font-size:24px}}
+.plot .dot{stroke:var(--paper-2);stroke-width:1.5}
+.plot .dS{fill:var(--gS)}.plot .dA{fill:var(--gA)}.plot .dB{fill:var(--gB)}.plot .dC{fill:var(--gC)}.plot .dU{fill:var(--gU)}
+.plotnote{font-size:12px;color:var(--ink-3);margin:0 0 18px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding:10px 0 10px;margin:14px 0 0;border-bottom:1px solid var(--line);display:grid;gap:8px}
+.bar .srow{display:flex;gap:8px;align-items:center}
+.bar input{flex:1;min-width:0;font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#F7F5EF;color:var(--ink)}
+.bar input:focus{outline:2px solid var(--felt);outline-offset:1px}
+.bar .rcount{font-size:13px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.empty{padding:28px 0;color:var(--ink-3);text-align:center}
+.gw{font-weight:600}.gw.S{color:var(--gS)}.gw.A{color:var(--gA)}.gw.B{color:var(--gB)}.gw.C{color:var(--gC)}.gw.U{color:var(--gU)}
+.card .map-m{display:none}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;font:inherit;font-size:14px;font-weight:600;padding:12px 18px;border-radius:999px;background:var(--felt);color:#fff;border:0;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer}
+.fab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.chip{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.sep{font-size:12px;color:var(--ink-3);align-self:center;padding:0 4px}
+.list{display:grid;border-top:1px solid var(--line)}
+.card{display:grid;grid-template-columns:38px 1fr auto;gap:6px 14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+.card .side{display:grid;gap:8px;justify-items:start}
+.card .ph{display:block;width:150px;aspect-ratio:4/3;overflow:hidden;border-radius:4px;border:1px solid var(--line);background:var(--paper-2);padding:0;cursor:zoom-in}
+.card .ph:focus-visible{outline:2px solid var(--felt);outline-offset:2px}
+.lb{position:fixed;inset:0;background:rgba(20,19,18,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px;z-index:10;cursor:zoom-out}
+.lb img{max-width:100%;max-height:85vh;object-fit:contain;border-radius:4px}
+.lb .cap{color:#EDE9E1;font-size:13px}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.card .credit{font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+.card .contrib{margin:6px 0 0;font-size:13px;color:var(--felt);font-weight:500}
+.card .contrib a,.contribs li a{color:inherit;text-decoration:none;border-bottom:1px solid currentColor}
+.contribs{margin-top:28px;padding:16px 18px;border:1px solid var(--line);border-radius:4px;background:var(--paper-2)}
+.contribs h2{font-family:Fraunces,serif;font-weight:600;font-size:18px;margin:0 0 6px}
+.contribs p{margin:0;color:var(--ink-2)}
+.contribs ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.contribs li{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-weight:500}
+.card .name{font-weight:600;font-size:16px;line-height:1.3;margin:0}
+.card .th{color:var(--ink-3);font-size:13px;font-weight:400;margin-left:6px}
+.card .meta{font-size:13px;color:var(--ink-3);margin:2px 0 0}
+.card .verdict{margin:6px 0 0;color:var(--ink-2);max-width:62ch}
+.card a{color:var(--ink);font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;white-space:nowrap;line-height:1;align-self:start}
+.card a:hover{border-color:var(--felt);color:var(--felt)}
+.card.hide{display:none}
+footer a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid var(--line)}footer a:hover{color:var(--felt);border-color:var(--felt)}
+footer .line{display:flex;gap:14px;align-items:center;margin-top:8px}
+footer .line img{width:120px;height:120px;border:1px solid var(--line);border-radius:4px;background:#fff;flex:none}
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);display:grid;gap:6px;max-width:70ch}
+@media (max-width:520px){
+  .card{grid-template-columns:34px 1fr}
+  .card .side{grid-column:2;width:100%;margin-top:2px}
+  .card .ph{width:100%;height:220px;aspect-ratio:auto}
+  .card .map-d{display:none}
+  .card .map-m{display:inline-block;margin:6px 0 2px}
+  .counts b{font-size:19px}
+}
+.vrow{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:999px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;padding:6px 16px;min-height:32px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible{outline:2px solid var(--felt);outline-offset:-2px}
+.chip.near[aria-pressed="true"]{background:var(--felt);border-color:var(--felt);color:#fff}
+.locmsg{font-size:12px;color:var(--ink-3)}
+#map{position:relative;z-index:0;height:62vh;min-height:340px;max-height:640px;margin-top:12px;border:1px solid var(--line);border-radius:4px;background:var(--paper-2)}
+#map .leaflet-tile-pane{filter:sepia(.25) saturate(.7) brightness(1.02)}
+#map.leaflet-container{font:inherit}
+.leaflet-popup-content{margin:12px 14px;font-size:13px;line-height:1.45}
+.pp b{font-size:14px}.pp .pm{color:var(--ink-3);font-size:12px;margin:2px 0 6px}.pp p{margin:0 0 8px}
+.pp img{display:block;width:100%;height:120px;object-fit:cover;border-radius:3px;margin:0 0 6px}
+.pp .pa{display:flex;gap:6px;flex-wrap:wrap}
+.pp .pa a,.pp .pa button{font:inherit;font-size:12px;line-height:1;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);text-decoration:none;cursor:pointer}
+.card .dist{color:var(--felt);font-weight:600}
+.card.flash{animation:flash 1.8s ease-out}
+@keyframes flash{from{background:var(--gB-bg)}to{background:transparent}}
+.counts .vis{display:inline-flex;align-items:baseline;padding:4px 0 4px 16px;border-left:2px solid var(--felt);color:var(--felt);font-weight:500}
+.counts .vis b{color:var(--felt)}
+.news{margin:10px 0 2px;padding:8px 12px;border:1px solid #e3dccf;border-radius:10px;background:#fbf8f2;font-size:.92rem}
+.news summary{cursor:pointer;font-weight:600}
+.news p{margin:6px 0 0;line-height:1.5}
+.news .newsnote{color:#6b6257;font-size:.86rem}
+.card .new{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;background:#c8102e;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.04em;vertical-align:middle}
+.chip[data-v="new"]{border-color:#c8102e;color:#c8102e}
+.chip[data-v="new"][aria-pressed="true"]{background:#c8102e;color:#fff}
+.ctry{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:-8px 0 14px}.ctry a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}.ctry a:hover{color:var(--felt);border-color:var(--felt)}
+.seas{font-weight:600;color:var(--brass)}
+</style>
+
+<div class="wrap">
+<div class="topbar">
+  <div class="eyebrow">Public Piano Map · Korea <a class="by" href="https://www.threads.com/@doc_isu" target="_blank" rel="noopener" title="Threads @doc_isu">by Chin</a></div>
+  <div class="lang" id="lang" role="group" aria-label="Language">
+    <button type="button" data-l="ko" class="main">한국어</button><button type="button" data-l="en">EN</button>
+  </div>
+</div>
+<nav class="ctry"><a href="../">Thailand</a> · <a href="../us/">USA</a></nav>
+<header>
+  <h1 id="h1"></h1>
+  <p class="lede" id="lede"></p>
+  <p class="lede call" id="call"></p>
+  <div class="counts" id="counts"></div>
+  <ul class="legend" id="legend"></ul>
+</header>
+
+<div class="zones" id="zones" role="group"></div>
+<p class="plotnote" id="plotnote"></p>
+<details class="news" id="news"><summary id="newsh"></summary><p id="newsb"></p><p class="newsnote" id="newsn"></p><p class="newsnote" id="newss"></p></details>
+
+<div class="bar" id="bar">
+  <div class="srow"><input type="search" id="q" autocomplete="off"><span class="rcount" id="rcount"></span></div>
+  <div class="filters" id="filters" role="group"></div>
+  <div class="vrow" id="vrow" hidden><div class="seg" id="seg" role="group"><button type="button" data-v="list"></button><button type="button" data-v="map"></button></div><button class="chip near" id="near" type="button" aria-pressed="false"></button><span class="locmsg" id="locmsg"></span></div>
+</div>
+<p class="empty" id="empty" hidden></p>
+<div class="list" id="list"></div>
+<div id="map" hidden></div>
+<button class="fab" id="fab" type="button"></button>
+
+<section class="contribs" id="contribs"><h2 id="ch"></h2><p id="cp"></p><ul id="cl"></ul></section>
+<div class="lb" id="lb" hidden><img id="lbimg" src="" alt=""><div class="cap" id="lbcap"></div></div>
+<footer><div id="f1"></div><div id="f2"></div><div id="f3"></div>
+<div id="f4" hidden></div></footer>
+</div>
+
+<script>
+const UI = {
+ ko:{h1:"피아노가 있는 곳을 알려드립니다. <em>연주자들이여, 사랑과 평화를 퍼뜨리세요.</em>",grade:g=>g+'등급',U:"미확정",legend:{"S":"공개 무대. 누구나 치고, 청중과 유동인구가 항상 있습니다.","A":"자유 연주. 앉아서 치면 됩니다.","B":"조건부. 시간·예약·직원 확인 같은 조건이 있습니다.","C":"연주자용 피아노. 손님이 쳐도 된다는 근거는 없습니다.","U":"미확정. 피아노가 있다는 기록은 있으나 지금도 있는지 확인하지 못했습니다."},plotnote:"구역은 대략적인 위치 순으로 놓았습니다. 눌린 건반 하나가 피아노 한 대, 색은 등급입니다. 구역을 누르면 그 구역만 보이고, 다시 누르면 풀립니다.",all:"전체",allR:"전 지역 보기",seen:"최근 확인 ",noyear:"확인 연도 없음",map:"구글맵",photo:"사진:",contrib:"공헌자:",gword:{"S":"공개 무대","A":"자유 연주","B":"조건부","C":"연주자용","U":"미확정"},search:"장소·지역 검색",none:"조건에 맞는 곳이 없습니다. 필터를 풀어 보세요.",results:n=>n+'곳',report:"피아노 제보",call:"신규 피아노 장소 제보는 언제든 환영입니다! 제보자는 페이지 공헌자로 등재됩니다.",ch:"공헌자",cp:"이 지도에 장소를 알려 주신 분들입니다. 제보하시면 이름이 여기에 올라갑니다.",f2:"다녀오셨으면 사진 한 장 보내 주세요. 등급을 갱신해 다음 연주자에게 전합니다. 새 장소 제보도 환영합니다.",f3:"제보와 연주 영상은 인스타그램 <a href=\"https://instagram.com/doc_isu\" target=\"_blank\" rel=\"noopener\">@doc_isu</a> DM으로.",season:"운영 시기 ",yr:"연중 운영만",lede:"서울을 중심으로, 한국에서 누구나 앉아서 칠 수 있는 피아노를 모았습니다. 서울문화재단 '피아노 서울' 같은 공식 사업과 지자체·교통공사 발표, 기사와 연주자들의 글에서 100여 곳을 골라내고, 정말 쳐도 되는지 등급을 매겼습니다. 지금도 있는지 확인하지 못한 곳은 미확정으로 표시했고, 다녀온 분들의 제보로 고쳐 나갑니다. 지도는 누구에게나 무료입니다. 피아노를 치신다면 가서 치세요. 그 자리가 곧 무료 공연이고, 음악, 사랑, 평화는 그렇게 퍼집니다.",f1:"등급은 공식 자료와 기사, 연주자들의 글을 합쳐 매겼고 근거 연도는 마지막으로 피아노가 확인된 해입니다. 야외 피아노는 겨울이나 비 오는 날 치워지기도 하니 가기 전에 한 번 더 확인하세요.",f4:""},
+ en:{h1:"Here is where the pianos are. <em>Pianists, go spread love and peace.</em>",grade:g=>'Grade '+g,U:"Unverified",legend:{"S":"Public stage. Anyone can play, and there is always a crowd passing by.","A":"Free to play. Just sit down.","B":"Conditional. Hours, sign-up or a word with the staff.","C":"A performer's piano. No evidence that visitors may play.","U":"Unverified. On record as having a piano, not confirmed to be there now."},plotnote:"Zones are laid out roughly by location. Each pressed key is one piano, colour is the grade. Tap a zone to show only that zone; tap again to clear.",all:"All",allR:"Show all areas",seen:"last confirmed ",noyear:"no dated evidence",map:"Google Maps",photo:"Photo:",contrib:"Contributor:",gword:{"S":"Public stage","A":"Free to play","B":"Conditional","C":"Performers only","U":"Unverified"},search:"Search places or areas",none:"Nothing matches. Try clearing the filters.",results:n=>n+(n===1?' place':' places'),report:"Report a piano",call:"New piano spots are always welcome! Everyone who reports one is listed as a contributor to this page.",ch:"Contributors",cp:"The people who told us about a piano. Report one and your name goes here.",f2:"Played one? Send a photo. The grade gets updated and passed on to the next pianist. New spots are welcome too.",f3:"Reports and videos: DM <a href=\"https://instagram.com/doc_isu\" target=\"_blank\" rel=\"noopener\">@doc_isu</a> on Instagram.",season:"season ",yr:"Year-round only",lede:"Pianos in Korea that anyone may sit down and play, centred on Seoul. Around a hundred places drawn from official programmes such as the Seoul Foundation for Arts and Culture's 'Piano Seoul', city and metro announcements, news reports and pianists' own posts, each graded on whether you really may play. Places we could not confirm are marked unverified and get corrected as people report back. The map is free for everyone. If you play, go and play. That seat is a free concert, and that is how music, love and peace get around.",f1:"Grades combine official sources, news reports and pianists' posts. The year is when the piano was last confirmed. Outdoor pianos are often put away in winter or rain, so check once more before you go.",f4:""}
+};
+const T = {station:["역","Station"],airport:["공항","Airport"],mall:["몰·상가","Mall"],park:["공원","Park"],library:["도서관","Library"],hospital:["병원","Hospital"],university:["대학","University"],cafe:["카페·식당","Café / bar"],street:["거리","Street"],culture:["문화시설","Arts venue"],other:["기타","Other"],rent:["유료 연습실(시간제)","Paid practice room (hourly)"],plaza:["광장","Plaza"],market:["시장·푸드홀","Market"],transit:["대중교통","Transit"],museum:["박물관","Museum"],hotel:["호텔","Hotel"]};
+const K = {"d":["디지털","Digital"],"g":["그랜드","Grand"],"u":["업라이트","Upright"],"":["",""]};
+const NEWS = {date:"2000-01-01",days:0,names:[],ui:{en:{h:"",b:"",n:"",s:""}}};
+const isNew = p => false;
+// [등급, 이름, 부제, 지역, 유형키, 피아노키, 근거연도, 위도, 경도, [설명…], 사진, 공헌자, 구글맵 검색어, 구역키, 운영 시기]
+const P = [
+ ["S","노들섬","라이브하우스 앞 · 피아노 서울","서울 · 용산구","park","",2026,37.51756,126.95857,["노들섬 라이브하우스 앞에 서울문화재단 '피아노 서울' 피아노가 있습니다. 매일 10~19시에 누구나 칠 수 있고, 한 번에 30분까지이며 야간 연주는 삼가 달라는 안내가 있습니다. 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano from the Seoul Foundation for Arts and Culture stands in front of the Live House on Nodeul Island. Anyone can play daily 10:00–19:00, up to 30 minutes a turn, and night playing is discouraged. It is on the foundation's 2026 list."],null,"","노들섬 서울 용산구","seoul_n",""],
+ ["S","마로니에공원","야외무대 안 · 피아노 서울","서울 · 종로구","park","u",2026,37.58051,127.00284,["대학로 마로니에공원 야외무대 한쪽에 갈색 업라이트 피아노가 있습니다. 상시 개방이라 누구나 칠 수 있고, 한 번에 30분까지이며 야간 연주는 삼가 달라는 안내가 있습니다. 2026년 재단 목록에 있고 2026년 10월에도 대학로 거리 피아노로 소개됐습니다.","A brown upright stands at the side of the outdoor stage in Marronnier Park, Daehak-ro. It is open at all hours to anyone, with a 30-minute limit per turn and a request to avoid night playing. It is on the foundation's 2026 list and was still being described as the Daehak-ro street piano in October 2026."],null,"","마로니에공원 서울 종로구","seoul_n",""],
+ ["S","서울문화예술교육센터 용산","1층 아트라운지 · 피아노 서울","서울 · 용산구","culture","",2026,37.5269,126.96657,["서빙고로 17 센터 1층 아트라운지, 무료 LP 감상존 옆에 있습니다. 화~토 10~18시 센터 운영 시간에 누구나 칠 수 있고 한 번에 30분까지이며, 개인 연습용은 아니라고 안내합니다. 2026년 8월 서울시 소식 글로 확인했습니다.","In the 1st-floor Art Lounge of Seoul Arts Education Center Yongsan (17 Seobinggo-ro), next to the free LP listening zone. Anyone can play during center hours, Tue–Sat 10:00–18:00, up to 30 minutes a turn; it is not meant for personal practice. Confirmed by a Seoul city news post from August 2026."],null,"","세랑메이크업 SERANG Makeup 서울 용산구","seoul_n",""],
+ ["S","서울문화재단 대학로센터","1층 공개공지 · 피아노 서울","서울 · 종로구","culture","",2026,37.58367,127.0037,["서울문화재단 대학로센터 1층 공개공지에 '피아노 서울' 피아노가 있습니다. 매일 10~19시에 누구나 칠 수 있고, 한 번에 30분까지이며 야간 연주는 삼가 달라는 안내가 있습니다. 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano sits in the ground-floor public plaza of the SFAC Daehakro Center. Anyone can play daily 10:00–19:00, up to 30 minutes a turn, and night playing is discouraged. It is on the foundation's 2026 list."],null,"","서울문화재단 대학로센터 서울 종로구","seoul_n",""],
+ ["S","서울숲","체험마당 · 피아노 서울","서울 · 성동구","park","",2026,37.54359,127.04474,["서울숲 체험마당에 '피아노 서울' 피아노가 있습니다. 상시 개방이라 누구나 칠 수 있고, 한 번에 30분까지이며 야간 연주는 삼가 달라는 안내가 있습니다. 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano stands in the Experience Yard (Cheheom Madang) of Seoul Forest. It is open at all hours to anyone, with a 30-minute limit per turn and a request to avoid night playing. It is on the foundation's 2026 list."],null,"","서울숲 서울 성동구","seoul_n",""],
+ ["S","서울어린이대공원 꿈마루","꿈마루 앞 데크 · 피아노 서울","서울 · 광진구","park","",2026,37.54931,127.0792,["서울어린이대공원 꿈마루 앞 데크에 '피아노 서울' 피아노가 있습니다. 매일 9~18시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2026년 재단 목록에 있으며, 2022년 글에는 '꿈마루 3층'으로 적혀 있어 예전과 자리가 다릅니다.","A 'Piano Seoul' piano stands on the deck in front of Kkummaru at Seoul Children's Grand Park. Anyone can play daily 09:00–18:00, up to 30 minutes a turn. It is on the foundation's 2026 list; a 2022 post placed it on Kkummaru's 3rd floor, so the spot has changed."],null,"","어린이대공원 꿈마루 서울 광진구","seoul_n",""],
+ ["S","서울연극창작센터","2층 야외마당 · 피아노 서울","서울 · 성북구","culture","",2026,37.58912,127.00602,["서울연극창작센터 2층 야외마당에 '피아노 서울' 피아노가 있습니다. 평일 11~20시, 주말 11~19시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano is in the 2nd-floor outdoor yard of the Seoul Theater Creation Center. Anyone can play 11:00–20:00 on weekdays and 11:00–19:00 on weekends, up to 30 minutes a turn. It is on the foundation's 2026 list."],null,"","서울연극창작센터 서울 성북구","seoul_n",""],
+ ["S","세종문화회관 세종라운지","세종라운지 입구(야외) · 광화문","서울 · 종로구","culture","",2026,37.57253,126.97564,["광화문 세종문화회관 세종라운지 입구 야외에 피아노가 있습니다. 옆에 '아무나 치세요'라고 적혀 있어 누구나 언제든 칠 수 있습니다. 2023년 10월에 설치됐고, 2026년 5월 기사에서 서울 공공 피아노 중 관리 상태가 가장 좋다는 평을 받았습니다.","A piano stands outdoors at the entrance to Sejong Lounge at the Sejong Center in Gwanghwamun. A sign beside it says 'anyone may play', so it is open to all at any time. Installed in October 2023, it was called the best-maintained public piano in Seoul in a May 2026 article."],null,"","세종라운지 서울 종로구","seoul_n",""],
+ ["S","용산문화재단","1층 공개공지 · 피아노 서울","서울 · 용산구","culture","",2026,37.53903,127.00206,["용산문화재단 1층 공개공지에 '피아노 서울' 피아노가 있습니다. 월~금 10~18시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2026년 9월에 설치됐으며, 녹사평역에 있던 피아노를 옮겨 온 것으로 보입니다.","A 'Piano Seoul' piano sits in the ground-floor public plaza of the Yongsan Foundation for Arts and Culture. Anyone can play Mon–Fri 10:00–18:00, up to 30 minutes a turn. It was installed in September 2026 and appears to be the piano moved from Noksapyeong Station."],null,"","용산문화재단 서울 용산구","seoul_n",""],
+ ["S","충무아트센터","후문 · 피아노 서울","서울 · 중구","culture","",2026,37.56569,127.01474,["충무아트센터 후문 쪽에 '피아노 서울' 피아노가 있습니다. 매일 9~18시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2025년 10월에 설치됐고 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano stands by the rear entrance of Chungmu Arts Center. Anyone can play daily 09:00–18:00, up to 30 minutes a turn. It was installed in October 2025 and is on the foundation's 2026 list."],null,"","충무아트센터 서울 중구","seoul_n",""],
+ ["S","한강플플(뚝섬한강공원)","1층 · 자양역 3번 출구 연결","서울 · 광진구","park","",2026,37.53053,127.06596,["자양역 3번 출구와 이어진 한강플플(옛 뚝섬 자벌레) 1층에 '피아노 서울' 피아노가 있습니다. 화~목 10~19시, 금·토 10~22시, 일 10~20시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano is on the 1st floor of Hangang PlPl (the former Ttukseom 'Jabeolle'), connected to Jayang Station Exit 3. Anyone can play Tue–Thu 10:00–19:00, Fri–Sat 10:00–22:00 and Sun 10:00–20:00, up to 30 minutes a turn. It is on the foundation's 2026 list."],null,"","한강플플 서울 광진구","seoul_n",""],
+ ["S","강동아트센터","주출입구 인근 · 피아노 서울","서울 · 강동구","culture","",2026,37.55096,127.15772,["강동아트센터 주출입구 인근에 '피아노 서울' 피아노가 있습니다. 매일 9~18시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2025년 5월에 설치됐고 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano stands near the main entrance of Gangdong Arts Center. Anyone can play daily 09:00–18:00, up to 30 minutes a turn. It was installed in May 2025 and is on the foundation's 2026 list."],null,"","강동아트센터 서울 강동구","seoul_s",""],
+ ["S","보라매공원","나무데크 · 피아노 서울","서울 · 동작구","park","",2026,37.49324,126.92047,["보라매공원 나무데크에 '피아노 서울' 피아노가 있습니다. 매일 9~19시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2025년 8월 이용 후기가 있고 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano stands on the wooden deck in Boramae Park. Anyone can play daily 09:00–19:00, up to 30 minutes a turn. A visitor wrote about playing it in August 2025, and it is on the foundation's 2026 list."],null,"","보라매공원 서울 동작구","seoul_s",""],
+ ["S","서울문화예술교육센터 양천","1층 로비 · 피아노 서울","서울 · 양천구","culture","",2026,37.52726,126.83282,["남부순환로64길 2 센터 1층 로비에 '피아노 서울' 피아노가 있습니다. 월~토 9~18시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano is in the 1st-floor lobby of Seoul Arts Education Center Yangcheon (2 Nambusunhwan-ro 64-gil). Anyone can play Mon–Sat 09:00–18:00, up to 30 minutes a turn. It is on the foundation's 2026 list."],null,"","남부순환로64길 서울 양천구","seoul_s",""],
+ ["S","코엑스 아티움","피아노 서울","서울 · 강남구","mall","",2026,37.50996,127.0613,["코엑스 아티움에 '피아노 서울' 피아노가 있으며, 건물 안 정확한 자리는 확인되지 않았습니다. 매일 10~19시에 누구나 칠 수 있고 한 번에 30분까지입니다. 2026년 재단 운영 목록에 올라 있습니다.","A 'Piano Seoul' piano is at COEX Artium; the exact spot inside has not been confirmed. Anyone can play daily 10:00–19:00, up to 30 minutes a turn. It is on the foundation's 2026 list."],null,"","코엑스 아티움 (무역회관) 서울 강남구","seoul_s",""],
+ ["S","가정역","6번 출구 쪽 환승통로 · Play Me 누구나 피아노","인천 · 서구","station","u",2026,37.52474,126.67428,["인천 2호선 가정역 6번 출구 쪽 환승통로에 업라이트 피아노가 있습니다. 'Play Me 누구나 피아노'라는 이름대로 시민 누구나 자유롭게 칠 수 있습니다. 2025년 4월에 설치됐고 2026년 7월 기사에서 운영 중으로 확인됩니다.","An upright stands in the transfer passage toward Exit 6 of Gajeong Station (Incheon Line 2). As its name 'Play Me – a piano for everyone' says, anyone is free to play. It was installed in April 2025 and a July 2026 article confirms it is in service."],null,"","가정역 인천 서구","gg",""],
+ ["S","검암역","대합실 · Play Me 누구나 피아노","인천 · 서구","station","u",2026,37.56923,126.67361,["인천 2호선 검암역 대합실에 업라이트 피아노가 있습니다. 2026년에 추가로 설치된 'Play Me 누구나 피아노'로, 누구나 자유롭게 칠 수 있습니다. 2026년 7월 기사로 확인했습니다.","An upright stands in the concourse of Geomam Station (Incheon Line 2). It is one of the 'Play Me – a piano for everyone' pianos added in 2026, free for anyone to play. Confirmed by a July 2026 article."],null,"","검암역 인천 서구","gg",""],
+ ["S","서해구문화회관","옛 인천서구문화회관 · Play Me 누구나 피아노","인천 · 서구","culture","u",2026,37.51543,126.67956,["서해구문화회관(옛 인천서구문화회관)에 'Play Me 누구나 피아노' 업라이트가 있고 누구나 자유롭게 이용할 수 있습니다. 회관 안 정확한 자리는 확인되지 않았습니다. 근거는 2026년 7월 기사에서 장소 이름이 나온 한 줄뿐입니다.","Seohae-gu Culture Center (formerly Incheon Seo-gu Culture Center) has a 'Play Me – a piano for everyone' upright that anyone may use freely. The exact spot inside is not confirmed. The only evidence is a single line naming the venue in July 2026 articles."],null,"","인천서해구문화회관 인천 서구","gg",""],
+ ["S","서해구청역","대합실 · Play Me 누구나 피아노","인천 · 서구","station","u",2026,37.54403,126.67699,["인천 2호선 서해구청역(옛 서구청역) 대합실에 업라이트 피아노가 있습니다. 구민이 기증한 피아노를 지역아동센터 아이들이 꾸몄고, 누구나 자유롭게 칠 수 있습니다. 2026년에 새로 설치돼 7월에 기념 음악회가 열렸습니다.","An upright stands in the concourse of Seohae-gu Office Station (formerly Seo-gu Office Station, Incheon Line 2). Donated by a resident and decorated by children from a local childcare center, it is free for anyone to play. It was newly installed in 2026, with a celebration concert held that July."],null,"","서해구청 인천 서구","gg",""],
+ ["S","석남역","환승통로 · Play Me 누구나 피아노","인천 · 서구","station","u",2026,37.50207,126.67203,["인천 2호선 석남역 환승통로에 업라이트 피아노가 있습니다. 'Play Me 누구나 피아노'라는 이름대로 시민 누구나 자유롭게 칠 수 있습니다. 2025년 4월에 설치됐고 2026년 7월 기사에서 운영 중으로 확인됩니다.","An upright stands in the transfer passage of Seoknam Station (Incheon Line 2). As its name 'Play Me – a piano for everyone' says, anyone is free to play. It was installed in April 2025 and a July 2026 article confirms it is in service."],null,"","석남역 인천 서구","gg",""],
+ ["S","회룡역 3층","하행 플랫폼 · 오픈 피아노 스테이지","경기 · 의정부시","station","",2026,37.72452,127.0472,["의정부경전철 회룡역 3층 하행 플랫폼에 시민이 기부한 공유 피아노가 있습니다. 승객 누구나 자유롭게 칠 수 있고, 사전 신청은 공연으로 쓸 때 필요한 것으로 보입니다. 2025년 6월에 시작해 2026년 6월 기준 운영 중입니다.","A shared piano donated by a resident stands on the 3rd-floor southbound platform of Hoeryong Station (Uijeongbu LRT). Any passenger may play freely; advance application appears to apply only to staging a performance. It started in June 2025 and was in operation as of June 2026."],null,"","회룡역 경기 의정부시","gg",""],
+ ["S","가야대역","2층 대합실 · Play Me, 피아노 김해","경남 · 김해시","station","u",2026,35.26694,128.86533,["부산김해경전철 가야대역 2층 대합실에 업라이트 피아노가 있습니다. 'Play Me, 피아노 김해'의 하나로 누구나 칠 수 있습니다. 2026년 7월 말 설치 소식으로 확인했습니다.","An upright stands in the 2nd-floor concourse of Gaya University Station on the Busan-Gimhae LRT. It is part of 'Play Me, Piano Gimhae' and open to anyone. Confirmed by the installation announcement in late July 2026."],null,"","가야대역 경남 김해시","bsn",""],
+ ["S","김해문화의전당","로비 · Play Me, 피아노 김해","경남 · 김해시","culture","u",2026,35.24391,128.86999,["김해문화의전당 로비에 업라이트 피아노가 있습니다. 'Play Me, 피아노 김해'의 공공 피아노로, 시민 누구나 자유롭게 치고 들을 수 있습니다. 2025년에 시범 설치됐고 2026년 6월 기사에서 운영 중으로 확인됩니다.","An upright stands in the lobby of Gimhae Arts and Sports Center. It is a 'Play Me, Piano Gimhae' public piano that anyone is free to play or listen to. Installed as a pilot in 2025, it is confirmed in service by a June 2026 article."],null,"","김해문화의전당 경남 김해시","bsn",""],
+ ["S","김해서부문화센터","로비 · Play Me, 피아노 김해","경남 · 김해시","culture","u",2026,35.17279,128.82051,["김해서부문화센터 로비에 업라이트 피아노가 있습니다. 김해문화관광재단의 'Play Me, 피아노 김해'로, 시민 누구나 자유롭게 치고 들을 수 있습니다. 2025년 시범 설치 3대 중 하나이며 2026년 6월 기사에서 운영 중으로 확인됩니다.","An upright stands in the lobby of Gimhae Seobu Culture Center. It belongs to the Gimhae Culture & Tourism Foundation's 'Play Me, Piano Gimhae' program, and anyone is free to play or listen. One of three pilot pianos from 2025, it is confirmed in service by a June 2026 article."],null,"","김해서부문화센터 경남 김해시","bsn",""],
+ ["S","화원역","지하 2층 대합실 무대 · 공연 특화역","대구 · 달성군","station","g",2026,35.80436,128.5004,["대구 1호선 화원역 지하 2층 대합실 무대에 달성군이 기증한 그랜드 피아노가 있습니다. 문화행사가 없을 때는 누구나 간단한 이용수칙을 지키며 칠 수 있고, 공연 중에는 칠 수 없으며 연주 시간 제한이 있습니다. 2026년 1월 기사로 확인했습니다.","A grand piano donated by Dalseong County sits on the stage in the B2 concourse of Hwawon Station (Daegu Line 1). When no event is on, anyone may play by following a few simple rules; it is unavailable during performances and there is a time limit. Confirmed by a January 2026 article."],null,"","화원 대구 달성군","dg",""],
+ ["S","삽교호관광지","함상공원 해양테마체험관 관리사무소 1층 로비","충남 · 당진시","other","",2025,36.88949,126.82624,["삽교호 함상공원 해양테마체험관 관리사무소 1층 로비에 시민이 기증한 피아노가 있습니다. 시민과 관광객 누구나 자유롭게 칠 수 있습니다. 2025년 5월 말 시범운영을 시작했고 2025년 7월 당진시 공식 글로 확인했습니다.","A piano donated by a resident stands in the 1st-floor lobby of the management office of the Marine Theme Experience Hall, in the warship park at Sapgyoho Tourist Area. Residents and tourists alike are free to play. Trial operation began in late May 2025, confirmed by an official Dangjin city post in July 2025."],null,"","삽교호 관광지 충남 당진시","cc",""],
+ ["A","동대문디자인플라자(DDP)","야외 광장","서울 · 중구","culture","u",2024,37.56653,127.00922,["DDP 야외 광장에 업라이트 피아노가 있고 3대라는 기록도 있습니다. 2024년 11월 자료에는 외국인 관광객도 즐겨 치는 길거리 피아노로 나오고, 2026년 5월 기사 목록에도 들어 있습니다. '피아노 서울' 소속이 아니며 운영 주체와 이용 시간은 확인되지 않았습니다.","Upright pianos stand in the outdoor plaza of Dongdaemun Design Plaza; one record says there are three. A November 2024 source shows foreign tourists happily playing the street piano, and it appears in a May 2026 article's list. It is not part of 'Piano Seoul', and the operator and hours are not confirmed."],null,"","동대문디자인플라자 서울 중구","seoul_n",""],
+ ["A","서울로 7017","장미쉼터·목련쉼터 등 고가 보행로","서울 · 중구","street","u",2023,37.55669,126.97139,["서울로 7017 고가 보행로의 장미쉼터·목련쉼터 등에 업라이트 피아노가 있고, 모두 4대라는 기사도 있습니다. 누구나 칠 수 있지만 비가 오면 덮개를 씌우고 사용을 멈춥니다. 2023년 10월 기준 장미쉼터 쪽은 페달 고장으로 못 쓰고 목련쉼터 쪽은 정상이었습니다.","Upright pianos stand along the Seoullo 7017 elevated walkway, including at the Rose and Magnolia rest areas; one article counts four in all. Anyone can play, but they are covered and closed when it rains. As of October 2023 the Rose-side piano was unusable with a broken sustain pedal, while the Magnolia-side one worked."],null,"","서울로 7017 서울 중구","seoul_n",""],
+ ["A","신당역","Sindang Station","서울 · 중구","station","",2026,37.56535,127.01622,["신당역에 공공 피아노가 있다고 하지만 역 안 정확한 자리와 운영 주체는 알 수 없습니다. 2026년 5월 기사에서 한 연주자가 '다소 고립된 자리여서 조용히 연주하기 좋다'고 소개했습니다. 근거가 이 발언 한 건뿐이라 현장 확인이 필요합니다.","Sindang Station is said to have a public piano, but the exact spot and the operator are unknown. In a May 2026 article a player described it as 'a somewhat secluded spot, good for playing quietly'. That remark is the only evidence, so it needs checking on site."],null,"","신당역 서울 중구","seoul_n",""],
+ ["A","신촌 홍익문고 앞","신촌역 3번 출구 40m · 연세로","서울 · 서대문구","street","u",2023,37.55578,126.93701,["2호선 신촌역 3번 출구에서 약 40m, 연세로 홍익문고 앞 길가에 업라이트 피아노가 있습니다. 2014년 5월쯤 설치돼 조율사가 관리해 왔고 지나는 누구나 칠 수 있습니다. 2022년 글에는 3~12월 주말에 운영한다고 되어 있고, 2026년 7월 글에도 나오지만 현장 확인은 아직입니다.","An upright stands on Yonsei-ro in front of Hongik Bookstore, about 40 m from Exit 3 of Sinchon Station (Line 2). Installed around May 2014 and looked after by a piano tuner, it is open to any passer-by. A 2022 post says it is out on weekends from March to December; it is mentioned again in July 2026 but has not been checked on site."],null,"","홍익문고 서울 서대문구","seoul_n",""],
+ ["A","인왕산 더숲 초소책방","2층 실내 한가운데 · 인왕산로 172","서울 · 종로구","cafe","g",2026,37.5859,126.96423,["인왕산로 172 더숲 초소책방 2층 실내 한가운데에 그랜드 피아노 한 대가 있습니다. 누구나 칠 수 있다고 하지만 북카페이니 음료를 주문하고 조용한 곡을 치는 편이 좋습니다. 2026년 11월에 본 온라인 목록이 근거이고 현장 확인은 아직입니다.","A grand piano sits in the middle of the 2nd floor at Chosochaekbang, the book cafe at 172 Inwangsan-ro. It is said to be open to anyone, but as it is a book cafe, order a drink and keep to quiet pieces. The evidence is an online list viewed in November 2026; it has not been checked on site."],null,"","더숲 초소책방 서울 종로구","seoul_n",""],
+ ["A","선유도공원","선유도이야기 전시관 · 잔디마당 옆","서울 · 영등포구","park","u",2024,37.54317,126.90097,["선유도공원 선유도이야기 전시관, 잔디마당 옆 야외에 갈색 업라이트 피아노가 있습니다. 시민 누구나 칠 수 있게 둔 공원 피아노로, 2013년 서울시가 공원에 2대를 설치했습니다. 2024년 1월 칼럼이 가장 최근 근거라 지금 상태는 확인이 필요합니다.","A brown upright stands outdoors by the Seonyudo Story exhibition hall, next to the lawn, in Seonyudo Park. It is a park piano left out for anyone to play; the city installed two in the park in 2013. The latest evidence is a January 2024 column, so its current state needs checking."],null,"","선유도공원 이야기관 서울 영등포구","seoul_s",""],
+ ["A","신월음악도서관","신월4동 주민센터 복합건물 4층 음악자료실","서울 · 양천구","library","d",2024,37.52467,126.84008,["신월4동 주민센터 복합건물 4층 음악자료실에 디지털 피아노가 있어 직접 칠 수 있습니다. 도서관 운영 시간 안에 이용하며, 헤드폰을 쓰는 방식으로 보입니다. 2024년 2월 글 기준입니다.","A digital piano in the music room on the 4th floor of the Sinwol 4-dong community center complex (Sinwol Music Library) is available to play. Use it during library hours, apparently with headphones. Information as of February 2024."],null,"","신월음악도서관 서울 양천구","seoul_s",""],
+ ["A","오산 소리울도서관","악기도서관 · 지하 1층 악기 체험·대여","경기 · 오산시","library","",null,37.13264,127.07496,["전국 첫 악기도서관인 오산 소리울도서관에서는 찾아온 시민이 직접 피아노를 칠 수 있다고 합니다. 지하 1층에서는 악기 체험과 대여도 합니다. 근거 기사의 날짜가 확인되지 않아 피아노 자리와 이용 방법은 가기 전에 확인이 필요합니다.","At Osan Soriul Library, Korea's first musical instrument library, visitors can reportedly play the piano themselves. The basement floor offers instrument try-outs and rentals. The source article is undated, so check the piano's location and how to use it before you go."],null,"","소리울도서관 경기 오산시","gg",""],
+ ["A","인천국제공항","1터미널 지하 교통센터 인근 · 2터미널 중앙","인천 · 중구","airport","",2022,37.46346,126.44171,["제1여객터미널 지하 교통센터 인근과 제2여객터미널 한가운데 등에서 피아노가 목격됐습니다. 2022년 목록에는 '돌아다니다 보면 보이고 마음대로 쳐도 된다'고 되어 있습니다. 근거가 2018~2022년 것이고 2026년 기사도 전해 들은 말이라 터미널마다 따로 확인이 필요합니다.","Pianos have been seen near the basement Transportation Center of Terminal 1 and in the middle of Terminal 2 at Incheon International Airport. A 2022 list says 'you come across them as you walk around, and you may play freely'. The sightings date from 2018–2022 and a 2026 article only repeats hearsay, so each terminal needs checking separately."],null,"","인천국제공항 인천 중구","gg",""],
+ ["A","김해 낙동강레일파크 와인동굴","Play Me, 피아노 김해","경남 · 김해시","other","u",2026,35.37182,128.82095,["김해 낙동강레일파크 와인동굴에 'Play Me, 피아노 김해' 업라이트 피아노가 있습니다. 누구나 자유롭게 치는 공공 피아노지만, 와인동굴이 유료 입장 시설일 수 있어 가기 전에 확인이 필요합니다. 2025년 시범 설치, 2026년 6월 기사 기준입니다.","A 'Play Me, Piano Gimhae' upright is in the Wine Cave at Gimhae Nakdong River Rail Park. It is a public piano anyone may play, but the Wine Cave may charge admission, so check before you go. Installed as a pilot in 2025; information as of a June 2026 article."],null,"","김해와인동굴 경남 김해시","bsn",""],
+ ["A","김해한옥체험관","Gimhae Hanok Experience Hall","경남 · 김해시","culture","u",2026,35.23418,128.87683,["김해한옥체험관에 업라이트 피아노가 있고 '피아노 버스킹' 장소로 소개됐습니다. 근거가 2026년 10월 SNS 글 한 줄뿐입니다. 늘 놓여 있는 피아노인지, '피아노 김해' 소속인지는 확인이 필요합니다.","Gimhae Hanok Experience Hall has an upright and was introduced as a 'piano busking' spot. The only evidence is one line from an October 2026 social media post. Whether the piano is permanent and whether it belongs to 'Piano Gimhae' still need to be confirmed."],null,"","김해한옥체험관 경남 김해시","bsn",""],
+ ["A","부산시민공원","뽀로로 야외무대 부근 · 풍경이 있는 피아노","부산 · 부산진구","park","",2021,35.16816,129.05739,["부산시민공원 뽀로로 야외무대 부근에 '풍경이 있는 피아노'라는 공유 피아노가 있다고 합니다. 시민 누구나 칠 수 있다고 소개됐습니다. 근거가 2021년 11월 기사 한 줄뿐이라 지금도 있는지는 확인 전입니다.","A shared piano called 'Piano with a View' is said to stand near the Pororo outdoor stage in Busan Citizens Park. It was introduced as open to any citizen. The only evidence is one line from a November 2021 article, so whether it is still there is unconfirmed."],null,"","부산시민공원 부산 부산진구","bsn",""],
+ ["A","연제문화체육공원","피아노 놀이터 · 연산동","부산 · 연제구","park","",2022,35.18459,129.09078,["부산 연산동 연제문화체육공원에 '피아노 놀이터'가 있습니다. 누구나 자유롭게 칠 수 있고 이용 시간은 11~20시입니다. 온천천 행사 때 쓰던 피아노를 옮겨 온 것으로, 2022년 5월 기사 이후 소식이 없어 지금도 있는지는 확인 전입니다.","Yeonje Culture & Sports Park in Yeonsan-dong, Busan, has a 'Piano Playground'. Anyone can play freely, 11:00–20:00. The piano was moved here from events at the Oncheoncheon riverside park; nothing has been reported since a May 2022 article, so whether it is still there is unconfirmed."],null,"","연제문화체육공원 부산 연제구","bsn",""],
+ ["A","클레이아크김해미술관","Play Me, 피아노 김해","경남 · 김해시","culture","u",2026,35.25099,128.7448,["클레이아크김해미술관에 '피아노 김해' 업라이트 피아노가 놓인 것으로 보이지만 미술관 안 정확한 자리는 모릅니다. 2026년 6월 기사에서는 확대 설치 예정지였고, 2026년 9월 방문 글 제목에 '피아노 김해'가 나옵니다. 설치를 직접 확인한 것은 아닙니다.","A 'Piano Gimhae' upright appears to have been placed at Clayarch Gimhae Museum, though the exact spot is unknown. A June 2026 article named the museum as a planned site, and the title of a September 2026 visitor post mentions 'Piano Gimhae'. The installation itself has not been directly confirmed."],null,"","클레이아크 김해미술관 경남 김해시","bsn",""],
+ ["A","대구국제공항","여객터미널 2층 일반대합실","대구 · 동구","airport","g",2015,35.89907,128.63916,["대구공항 여객터미널 2층 일반대합실에 그랜드 피아노 'Play Me! I'm Yours!'가 있습니다. 2015년 12월 설치 때부터 누구나 직접 칠 수 있게 했고, 30분 넘게 독점하지 말라는 당부가 있습니다. 2026년 11월 온라인 목록에도 실려 있지만 현장 확인은 아직입니다.","A grand piano labelled 'Play Me! I'm Yours!' stands in the 2nd-floor public concourse of the Daegu International Airport passenger terminal. Anyone has been free to play since it was installed in December 2015; players are asked not to hog it for more than 30 minutes. It is still in a November 2026 online list, but has not been checked on site."],null,"","대구국제공항 대구 동구","dg",""],
+ ["A","동성로","Dongseong-ro","대구 · 중구","street","",2025,35.8695,128.59697,["대구 동성로 어딘가에 길거리 피아노가 있다고 합니다. 2025년 8월 '동성로 길거리 피아노에서 연주해 보았다'는 영상 제목 한 건이 근거의 전부입니다. 정확한 자리와 운영 주체는 확인이 필요합니다.","There is said to be a street piano somewhere on Dongseong-ro in Daegu. The only evidence is the title of an August 2025 video, 'playing on the Dongseong-ro street piano'. The exact spot and the operator still need to be confirmed."],null,"","투썸플레이스 대구 동성로 대구 중구","dg",""],
+ ["A","범어역","개찰구 앞 · 연결통로","대구 · 수성구","station","d",2026,35.85903,128.62685,["대구 2호선 범어역 개찰구 앞에 디지털 피아노가 새로 놓여 운영 시간 중 자유롭게 칠 수 있지만 건반 일부가 고장 나 있습니다. 연결통로의 다른 피아노는 자물쇠로 잠겨 있고 연락하면 열어 준다는 공지가 있습니다. 2026년 온라인 목록 기준입니다.","A digital piano newly placed in front of the ticket gates at Beomeo Station (Daegu Line 2) can be played freely during operating hours, though some keys are broken. Another piano in the connecting passage is padlocked, with a notice saying it will be unlocked if you call. Information from a 2026 online list."],null,"","범어 대구 수성구","dg",""],
+ ["A","죽전역(대구)","지하 1층 통로 · 공유 피아노","대구 · 달서구","station","",2024,35.85074,128.53881,["대구 2호선 죽전역 지하 1층 통로에 있고, 벽에 '죽전역 공유 피아노', '누구나 언제든 즐길 수 있어요'라고 크게 적혀 있습니다. 2023년 2월 무렵 생겼고 2024년 3월 글까지 확인됩니다. 그 뒤 소식은 확인하지 못했습니다.","In the B1 passage of Jukjeon Station (Daegu Line 2), under large wall lettering that reads 'Jukjeon Station shared piano' and 'anyone can enjoy it anytime'. It appeared around February 2023 and is documented up to March 2024. Nothing newer has been found."],null,"","죽전 대구 달서구","dg",""],
+ ["A","광주광역시청","1층 민원실 앞 로비 '시민의 숲'","광주 · 서구","other","",2017,35.1601,126.85147,["광주시청 1층 민원실 앞 로비 '시민의 숲'에 2017년 공용 피아노가 놓였습니다. 시청 1층은 시민에게 열린 공간입니다. 2017년 배치 기록과 2022년 온라인 목록 이후 소식이 없어 지금도 있는지는 확인 전입니다.","A shared piano was placed in 2017 in the 'Citizens' Forest' lobby in front of the civil service office on the 1st floor of Gwangju City Hall. The 1st floor is open to the public. Nothing newer than the 2017 record and a 2022 online list has been found, so whether it is still there is unconfirmed."],null,"","전남광주통합특별시청 광주청사 광주 서구","gj",""],
+ ["A","남광주역","지하 1층 대합실","광주 · 동구","station","",2022,35.13945,126.92288,["광주 1호선 남광주역 지하 1층 대합실에 아무나 칠 수 있는 개방형 피아노가 있다고 합니다. 근거는 2022년 11월 온라인 목록 한 건입니다. 지금도 있는지는 현장 확인이 필요합니다.","An open piano that anyone can play is said to stand in the B1 concourse of Namgwangju Station (Gwangju Line 1). The only evidence is a November 2022 online list. Whether it is still there needs checking on site."],null,"","남광주역 광주 동구","gj",""],
+ ["A","금강휴게소","로비(2층) · 경부고속도로 상·하행 공용","충북 · 옥천군","other","g",2026,36.279,127.67203,["경부고속도로 금강휴게소 로비(2층)에 그랜드 피아노 한 대가 있습니다. 방문객 누구나 칠 수 있게 놓았다고 하며, 상·하행이 같은 건물을 써서 어느 방향에서 와도 들를 수 있습니다. 2022년과 2026년 11월 온라인 목록이 근거이고 현장 확인은 아직입니다.","A grand piano stands in the lobby (2nd floor) of Geumgang Service Area on the Gyeongbu Expressway. It is reportedly there for any visitor to play, and both directions share the same building, so you can stop from either side. The evidence is online lists from 2022 and November 2026; it has not been checked on site."],null,"","금강휴게소 충북 옥천군","cc",""],
+ ["A","세종 어진동 지하 보행통로","한뜰마을 3단지↔호수공원 · 호수 위의 피아노","세종 · 어진동","street","",2025,36.50485,127.2738,["어진동 607번지 일원, 한뜰마을 3단지와 호수공원을 잇는 지하 보행통로에 주민 제안으로 놓인 피아노입니다. 따로 신청하지 않고 누구나 칠 수 있었습니다. 2025년 4월에 설치돼 11월 30일까지 운영한다고 공지했고, 2026년에 다시 운영하는지는 확인 전입니다.","A resident-proposed piano in the pedestrian underpass linking Hantteul Village Complex 3 and Lake Park in Eojin-dong, Sejong (around lot 607). Anyone could play without signing up. It was installed in April 2025 and announced to run until 30 November 2025; whether it returned in 2026 is unconfirmed."],null,"","한뜰마을3단지 세종더샵레이크파크 세종 어진동","cc",""],
+ ["B","그루브뮤직스튜디오","그랜드피아노 연습실 · 동일로 711","서울 · 중랑구","rent","g",2026,37.59398,127.07989,["【유료】 서울 중랑구 동일로 711의 연습실로, 야마하 G3 그랜드 피아노가 있습니다. 시간당 35,000원이며 네이버 예약이나 전화(02-434-7110)로 예약합니다. 2026년 기준입니다.","【PAID】 A practice room at 711 Dongil-ro, Jungnang-gu, Seoul (Groove Music Studio), with a Yamaha G3 grand. It costs 35,000 won per hour; book through Naver Booking or by phone (02-434-7110). Information as of 2026."],null,"","그루브뮤직스튜디오(Groove Studio) 서울 중랑구","seoul_n",""],
+ ["B","엘뮤직음악연습실","은평구 대조동","서울 · 은평구","rent","g",2026,37.61495,126.92204,["【유료】 서울 은평구 대조동의 음악연습실입니다. 그랜드 피아노 연습실은 시간당 7,500원이고 24시간 쓸 수 있으며, 업라이트 방은 밤 11시까지입니다. 2026년 공간 대여 등록 정보를 한 줄 요약으로만 확인했으니 예약 전에 다시 확인하세요.","【PAID】 L Music practice rooms in Daejo-dong, Eunpyeong-gu, Seoul. The grand piano room costs 7,500 won per hour and is available around the clock; upright rooms close at 23:00. This rests on a one-line summary of a 2026 space-rental listing, so recheck before booking."],null,"","엘뮤직음악연습실 서울 은평구","seoul_n",""],
+ ["B","뮤지카 델라 루체","고양 주엽역 인근 · 24시간 대여","경기 · 고양시","rent","g",2026,37.66932,126.76386,["【유료】 고양 주엽역 인근의 피아노 연습실입니다. 시간당 업라이트 7,000원, 야마하 그랜드 10,000원이고 24시간 대여합니다. 2026년 연습실 등록 정보를 한 줄 요약으로만 확인했으니 요금과 주소는 예약 전에 다시 확인하세요.","【PAID】 Musica della Luce, piano practice rooms near Juyeop Station in Goyang. Hourly rates are 7,000 won for an upright and 10,000 won for a Yamaha grand, with 24-hour rental. This rests on a one-line summary of a 2026 listing, so recheck the price and address before booking."],null,"","뮤지카델라루체 경기 고양시","gg",""],
+ ["B","예술다방(안산)","Yesul Dabang cafe, Ansan","경기 · 안산시","cafe","",2022,37.33323,126.84498,["안산의 카페 예술다방에 피아노가 있으며 주소는 확인되지 않았습니다. 손님은 자유롭게 칠 수 있다고 하지만, 다른 손님이 여럿 있을 때는 사장님께 먼저 허락을 구하세요. 2022년 7월 글 기준입니다.","Yesul Dabang, a cafe in Ansan, has a piano; its address is not confirmed. Customers are said to be free to play, but ask the owner first when other guests are around. Information as of July 2022."],null,"","예술다방 경기 안산시","gg",""],
+ ["B","위드피아노 화성동탄점","동탄지성로 14 삼현빌딩 5층","경기 · 화성시","rent","",2026,37.20514,127.07296,["【유료】 동탄지성로 14 삼현빌딩 5층의 성인 피아노학원으로 매일 06:00~24:00 운영합니다. 연습실은 회원용으로 보이며 시간제 대여가 되는지는 확인되지 않았습니다. 전국에 지점이 있는 체인이고 2026년 기준입니다.","【PAID】 With Piano Dongtan, an adult piano school on the 5th floor of the Samhyeon Building, 14 Dongtanjiseong-ro, open daily 06:00–24:00. Practice rooms appear to be for members; hourly rental is not confirmed. It is part of a nationwide chain; information as of 2026."],null,"","14 경기 화성시","gg",""],
+ ["B","의정부음악도서관 3층","피아노 연습실·스튜디오","경기 · 의정부시","library","u",2025,37.72845,127.05382,["장곡로 280 의정부음악도서관 3층에 피아노 연습실과 스튜디오가 있습니다. 도서관 이용자는 누구나 무료로 쓸 수 있고, 스튜디오 B의 사일런트 업라이트 피아노는 예약 없이 이용할 수 있습니다. 2025년 1월 글 기준입니다.","The 3rd floor of Uijeongbu Music Library (280 Janggok-ro) has piano practice rooms and studios. Any library visitor can use them free of charge, and the silent upright in Studio B needs no reservation. Information as of January 2025."],null,"","의정부음악도서관 경기 의정부시","gg",""],
+ ["B","장피아노 스튜디오(군포 산본)","All 야마하 · 24시 무인 연습실","경기 · 군포시","rent","u",2026,37.35805,126.93425,["【유료】 군포 산본의 24시간 무인 피아노 연습실로, 야마하 업라이트 피아노를 둡니다. 네이버 예약으로 이용하고 월 대여는 할인됩니다. 2026년 홍보 글을 한 줄 요약으로만 확인해 요금과 정확한 주소는 알 수 없습니다.","【PAID】 Jang Piano Studio, a 24-hour unstaffed practice studio in Sanbon, Gunpo, equipped with Yamaha uprights. Book through Naver Booking; monthly rental is discounted. This rests on a one-line summary of a 2026 promotional post, so the price and exact address are unknown."],null,"","장피아노 스튜디오 경기 군포시","gg",""],
+ ["B","회룡역 2층","힐링컬쳐스테이지 H · 1번 출구 방향","경기 · 의정부시","station","",2026,37.72452,127.0472,["의정부경전철 회룡역 2층(1번 출구 방향) '힐링컬쳐스테이지 H' 무대에 시민이 기부한 피아노가 있습니다. 공연 무대용이라 개인·단체·동호회가 네이버폼으로 신청하고 협의한 뒤 무료로 쓸 수 있습니다. 정기 조율을 하며 2026년 6월 기준 운영 중입니다.","A piano donated by a resident sits on the 'Healing Culture Stage H' on the 2nd floor of Hoeryong Station (Uijeongbu LRT), toward Exit 1. It is a performance stage: individuals, groups and clubs can use it free of charge after applying through a Naver form and arranging a slot. It is tuned regularly and was in operation as of June 2026."],null,"","회룡역 경기 의정부시","gg",""],
+ ["B","Pianist Are Here 마린시티점","해운대해변로 154 2층 201호","부산 · 해운대구","rent","g",2026,35.1579,129.14848,["【유료】 부산 해운대해변로 154 2층 201호의 성인 레슨 겸 연습실로, 스튜디오에 야마하 CF 풀사이즈 그랜드 피아노가 있습니다. 레슨 회원은 연습실을 무제한 쓸 수 있고, 시간당 요금은 나와 있지 않습니다. 2026년 기준입니다.","【PAID】 Pianist Are Here (Marine City), an adult lesson school with practice rooms at Room 201, 2F, 154 Haeundaehaebyeon-ro, Busan; the studio has a full-size Yamaha CF grand. Lesson members get unlimited practice-room use; no hourly rate is published. Information as of 2026."],null,"","154 부산 해운대구","bsn",""],
+ ["B","송도스카이파크 2층 카페","송도해상케이블카 종점 · 암남공원","부산 · 서구","cafe","u",2022,35.06316,129.01945,["암남공원 쪽 송도해상케이블카 종점(송도스카이파크) 건물 2층 카페 겸 식당에 업라이트 피아노 1대가 있습니다. 주문한 손님만 칠 수 있고 요란한 곡은 삼가는 분위기입니다. 2022년 11월 온라인 목록이 근거라 지금도 있는지는 확인이 필요합니다.","One upright sits in the 2nd-floor cafe-restaurant of the Songdo Sky Park building, the Amnam Park end of the Songdo cable car. Only customers who have ordered may play, and loud pieces are frowned upon. The evidence is a November 2022 online list, so check that it is still there."],null,"","EL 16.52 부산 서구","bsn",""],
+ ["B","피아노투게더(부산 3개 지점)","부산대점·경성대점·서면점","부산 · 금정구","rent","",2026,35.15999,129.05557,["【유료】 부산대점·경성대점·서면점(서면역 9번 출구 도보 4분) 세 곳을 둔 성인 피아노학원입니다. 회원은 세 지점 연습실을 무제한 쓸 수 있다고 합니다. 2026년 소개 글 한 줄이 근거라 요금과 비회원 이용 여부는 확인되지 않았습니다.","【PAID】 Piano Together, an adult piano school with three Busan branches: Pusan National University, Kyungsung University and Seomyeon (4 minutes on foot from Seomyeon Station Exit 9). Members reportedly get unlimited use of practice rooms at all three. The evidence is one line from a 2026 listing, so fees and non-member access are not confirmed."],null,"","Piano Together Seomyeon 부산 금정구","bsn",""],
+ ["C","건국대병원","로비 라운지 · 정오의 음악회","서울 · 광진구","hospital","g",null,37.54049,127.07195,["건국대병원 로비 라운지에 그랜드 피아노가 있고 점심시간마다 연주가 열립니다. 연주자는 대부분 자원봉사자나 음대 학생이며 순서는 인터넷 카페에서 정하는, 신청형 자원봉사 연주입니다. 연도를 알 수 없는 오래된 기사가 근거라 지금도 하는지는 확인이 필요합니다.","A grand piano in the lobby lounge of Konkuk University Medical Center is played every lunchtime. This is volunteer performance by sign-up: most players are volunteers or music students, and slots are arranged through an online community. The evidence is an old, undated article, so whether it continues needs checking."],null,"","건국대학교병원 서울 광진구","seoul_n",""],
+ ["C","서울아산병원","로비 음악회","서울 · 송파구","hospital","",2011,37.52655,127.10812,["서울아산병원 로비에서는 2003년부터 음악회가 열립니다. 까다로운 기준으로 선별된 자원봉사 공연팀만 서는 연주자용 무대이고, 일반인이 자유롭게 칠 수 있는 피아노가 아닙니다. 2011년 기사가 근거이며 피아노 종류는 나와 있지 않습니다.","Asan Medical Center has held concerts in its lobby since 2003. It is a performers' stage: only volunteer groups selected under strict criteria play, and it is not a piano the public may use. The evidence is a 2011 article, which does not say what kind of piano it is."],null,"","서울아산병원 서울 송파구","seoul_s",""],
+ ["C","의정부음악도서관 1층","피아노 연주 공간 · 장암근린공원","경기 · 의정부시","library","",2024,37.72845,127.05382,["장곡로 280 장암근린공원 안 도서관 1층에 피아노 연주 공간이 있습니다. 정해진 시간의 공연에 쓰는 연주자용으로 보이며, 일반인이 자유롭게 쳐도 된다는 근거는 없습니다. 2024년 3월 글 기준이고, 직접 치려면 3층 연습실 쪽을 이용하세요.","The 1st floor of Uijeongbu Music Library (280 Janggok-ro, in Jangam Neighborhood Park) has a piano performance space. It appears to be for performers at scheduled concerts; nothing indicates the public may play freely. Information as of March 2024 – to play yourself, use the practice rooms on the 3rd floor."],null,"","의정부음악도서관 경기 의정부시","gg",""],
+ ["C","전주 예수병원","본관 2층 로비 홀","전북 · 전주시","hospital","g",null,35.81419,127.13331,["예수병원 본관 2층 로비 홀에 그랜드 피아노가 있습니다. 자원봉사 연주자 10여 명이 평일 11:30~12:00, 14:30~15:00에 공연하는 연주자용 피아노이고, 일반인이 자유롭게 칠 수 있다는 근거는 없습니다. 글의 날짜가 확인되지 않아 지금도 하는지는 모릅니다.","A grand piano stands in the 2nd-floor lobby hall of the main building of the Presbyterian Medical Center (Jesus Hospital) in Jeonju. It is for performers: about ten volunteer musicians play live on weekdays 11:30–12:00 and 14:30–15:00, and nothing suggests the public may play. The source is undated, so whether this continues is unknown."],null,"","예수병원 전북 전주시","gj",""],
+ ["U","대학로 서울재즈아카데미 앞","길거리 피아노 1호","서울 · 종로구","street","u",2014,37.5802,127.00279,["2014년 대학로 서울재즈아카데미 건물 앞에 남녀노소 누구나 실력에 관계없이 치는 업라이트 '길거리 피아노 1호'가 놓였습니다. 이후 혜화역 4번 출구 길거리 피아노로 이어졌다고 합니다. 이 자리에 지금도 있는지는 확인 전입니다.","In 2014 an upright dubbed 'Street Piano No. 1' was placed in front of the Seoul Jazz Academy building on Daehak-ro for anyone to play, whatever their age or skill. It was later followed by the street piano at Hyehwa Station Exit 4. Whether anything remains at this spot is unconfirmed."],null,"","마로니에 공원 서울 종로구","seoul_n",""],
+ ["U","명동","피아노 서울 2023년 시범 설치","서울 · 중구","street","",2024,37.55998,126.98583,["명동에는 2023년 '피아노 서울' 시범 설치 때 시민 누구나 칠 수 있는 피아노가 놓였지만 정확한 자리는 알 수 없습니다. 2025년 4월 목록과 2026년 재단 목록에 모두 없어 철거된 것으로 의심됩니다. 지금 있는지는 확인 전입니다.","Myeongdong got a piano open to anyone in the 2023 'Piano Seoul' pilot, but the exact spot is unknown. It is missing from both the April 2025 list and the 2026 list, so it has probably been removed. Unconfirmed."],null,"","명동 서울 중구","seoul_n",""],
+ ["U","북서울꿈의숲","Dream Forest","서울 · 강북구","park","",2021,37.62029,127.04521,["북서울꿈의숲에 예전에 피아노가 있었다는 2021년 2월 커뮤니티 글이 있지만 공원 안 어디인지는 모릅니다. 글쓴이는 당시 피아노 상태가 매우 나빴고 지금은 어떤지 모르겠다고 했습니다. 지금 있는지는 확인 전입니다.","A February 2021 forum post says Dream Forest used to have a piano, without saying where in the park. The writer recalled it being in very poor condition and did not know its current state. Whether it still exists is unconfirmed."],null,"","북서울꿈의숲 서울 강북구","seoul_n",""],
+ ["U","서울역 오픈 콘서트홀","3층 맞이방 · 코레일 오픈 콘서트홀","서울 · 용산구","station","g",null,37.55285,126.97257,["서울역 3층 맞이방에 그랜드 피아노 2대를 갖춘 열린 무대가 마련됐고, 코레일 홈페이지로 신청해 선정되면 전문 연주자가 아니어도 연주할 수 있었습니다. 근거는 2008~2009년 무렵으로 보이는 개관 기사뿐입니다. 지금도 있는지는 확인 전입니다.","An open stage with two grand pianos was set up in the 3rd-floor waiting hall of Seoul Station; non-professionals could perform too, by applying on the Korail website and being selected. The only evidence is opening coverage that seems to date from around 2008–2009. Whether it still exists is unconfirmed."],null,"","서울역 서울 용산구","seoul_n",""],
+ ["U","홍대 레드로드","피아노 서울 · 2025년 목록","서울 · 마포구","street","",2025,37.54892,126.9206,["홍대 앞 레드로드는 2023년 시범 설치 때부터 '피아노 서울' 피아노가 놓인 곳으로, 2025년 4월 13대 목록에 들어 있습니다. 거리 어디쯤인지는 확인되지 않았습니다. 2026년 재단 목록에는 없어 지금도 있는지는 확인 전입니다.","Hongdae Red Road has hosted a 'Piano Seoul' piano since the 2023 pilot and was among the 13 sites listed in April 2025. Where along the street it stands is not confirmed. It is absent from the foundation's 2026 list, so whether it remains is unconfirmed."],null,"","레드로드 서울 마포구","seoul_n",""],
+ ["U","김포국제공항","2층(터미널 미상)","서울 · 강서구","airport","",2022,37.55901,126.79424,["2022년 11월 온라인 연주 가능 장소 목록에 '김포국제공항 2층'으로만 올라 있고, 어느 터미널인지는 모릅니다. 공항공사 자료에서는 확인하지 못했습니다. 지금 있는지, 아무나 쳐도 되는지는 확인 전입니다.","Gimpo International Airport appears only as '2nd floor' in a November 2022 online list of places where you can play; which terminal is unknown. Nothing in the airport operator's materials backs it up. Whether it exists and is open to anyone is unconfirmed."],null,"","김포국제공항 서울 강서구","seoul_s",""],
+ ["U","더현대 서울","2층","서울 · 영등포구","mall","",2026,37.52605,126.9283,["2026년 온라인 연주 가능 장소 목록에 '여의도 더현대 서울 2층'이라고 한 줄 적혀 있고 다른 근거는 없습니다. 2층 어디인지, 아무나 쳐도 되는지는 알 수 없으니 직원에게 먼저 물어보세요. 피아노가 있는지부터 확인 전입니다.","A 2026 online list of places where you can play has a single line, 'The Hyundai Seoul, 2nd floor, Yeouido', and there is no other evidence. Where on the floor it is and whether anyone may play are unknown, so ask staff first. Even the piano's existence is unconfirmed."],null,"","더현대 서울 서울 영등포구","seoul_s",""],
+ ["U","롯데월드몰","3층 식당가 홍그라운드 · 아트 피아노","서울 · 송파구","mall","u",2017,37.51374,127.10425,["롯데월드몰 3층 식당가 홍그라운드에 2017년 5월 손님 누구나 칠 수 있는 참여형 '아트 피아노'(업라이트) 2대가 설치됐습니다. 근거가 설치 당시 기사뿐이고 이후 소식이 없습니다. 지금도 있는지는 확인 전입니다.","Two participatory 'art pianos' (uprights) that any shopper could play were installed in May 2017 at Hong Ground, the 3rd-floor dining area of Lotte World Mall. The only evidence is the installation article, with nothing since. Whether they are still there is unconfirmed."],null,"","롯데월드몰 서울 송파구","seoul_s",""],
+ ["U","서울식물원","피아노 서울 · 2025년 목록","서울 · 강서구","park","",2025,37.57107,126.83466,["서울식물원은 2025년 4월 '피아노 서울' 13대 설치 장소에 들어 있고 누구나 칠 수 있다고 했습니다. 식물원 안 정확한 자리는 확인되지 않았습니다. 2025년 8월 글에도 야외 설치 장소로 나오지만 2026년 재단 목록에는 없어 지금도 있는지는 확인 전입니다.","Seoul Botanic Park was one of the 13 'Piano Seoul' sites listed in April 2025, open for anyone to play; the exact spot in the park is not confirmed. An August 2025 article still mentions it as an outdoor site, but it is absent from the foundation's 2026 list, so whether it remains is unconfirmed."],null,"","서울식물원 서울 강서구","seoul_s",""],
+ ["U","석촌호수","서호와 동호 사이","서울 · 송파구","park","",2022,37.51009,127.10408,["석촌호수 서호와 동호 사이에 칠 수 있는 피아노가 있다고 2022년 11월 온라인 목록에 올라 있습니다. 운영 시간이나 관리 주체는 알 수 없습니다. 근거가 이 한 줄뿐이라 지금도 있는지는 확인 전입니다.","A November 2022 online list says there is a playable piano between the west and east lakes of Seokchon Lake. Hours and operator are unknown. With only that one line of evidence, whether it still exists is unconfirmed."],null,"","석촌호수 서울 송파구","seoul_s",""],
+ ["U","신림역 삼모빌딩","1층 · 신림역 3번 출구 부근","서울 · 관악구","other","",2022,37.48257,126.92842,["신림역 3번 출구 부근 삼모빌딩 1층에 칠 수 있는 피아노가 있다고 2022년 11월 온라인 목록에 올라 있습니다. 건물 안 어디인지, 누가 관리하는지는 알 수 없습니다. 근거가 이 한 줄뿐이라 지금도 있는지는 확인 전입니다.","A November 2022 online list says there is a playable piano on the 1st floor of the Sammo Building near Exit 3 of Sillim Station. Where in the building it is and who looks after it are unknown. With only that one line of evidence, whether it still exists is unconfirmed."],null,"","삼모스포렉스빌딩 서울 관악구","seoul_s",""],
+ ["U","여의도 IFC몰","지하 영화관(CGV) 부근","서울 · 영등포구","mall","",2019,37.52525,126.92603,["IFC몰 지하 영화관(CGV) 부근에 피아노가 있어 2019년 11월 기사에서 연주자들이 즐겨 찾는 곳으로 나왔습니다. 2026년 기사에는 '2020~2021년쯤 피아노가 있었다'고만 되어 있어 철거된 것으로 의심됩니다. 지금 있는지는 확인 전입니다.","A piano near the basement cinema (CGV) in IFC Mall Yeouido was named as a players' regular spot in a November 2019 article. A 2026 article says only that 'there was a piano around 2020–2021', so it has probably been removed. Unconfirmed."],null,"","렌위치 서울 영등포구","seoul_s",""],
+ ["U","천호지하보도","Cheonho Underpass","서울 · 강동구","street","",2022,37.53849,127.12376,["2022년 11월 온라인 연주 가능 장소 목록에 '천호지하도로(강동구)'라고 한 줄 올라 있습니다. 지하보도 안 어디인지, 누가 운영하는지는 알 수 없습니다. 근거가 이 한 줄뿐이라 지금도 있는지는 확인 전입니다.","The Cheonho Underpass in Gangdong-gu appears as a single line in a November 2022 online list of places where you can play. Where in the underpass it is and who runs it are unknown. With only that one line of evidence, whether it still exists is unconfirmed."],null,"","천호지하차도 서울 강동구","seoul_s",""],
+ ["U","동탄역(SRT)","Dongtan Station (SRT)","경기 · 화성시","station","",2022,37.19933,127.09702,["2022년 11월 온라인 연주 가능 장소 목록에 'SRT 동탄역'이 이름만 올라 있고, 역 안 어디인지는 모릅니다. 함께 실린 수서역 피아노는 철거된 것으로 보입니다. 이곳도 지금 있는지는 확인 전입니다.","Dongtan Station (SRT) appears by name only in a November 2022 online list of places where you can play; where in the station is unknown. The Suseo Station piano listed alongside it seems to have been removed. Whether this one still exists is unconfirmed."],null,"","동탄역 경기 화성시","gg",""],
+ ["U","안성 만정유적공원","공도읍 · 길거리 피아노","경기 · 안성시","park","",2022,37.00668,127.17353,["안성 공도읍 만정유적공원 안에 길거리 피아노가 놓여 시민 누구나 실력과 관계없이 자유롭게 칠 수 있었습니다. 2022년 8월 2일 시범 운영을 시작했다는 기사 이후 소식이 없습니다. 지금도 있는지는 확인 전입니다.","A street piano was placed in Manjeong Historic Park in Gongdo-eup, Anseong, for anyone to play regardless of skill. Nothing has been reported since the article on its trial launch on 2 August 2022. Whether it still exists is unconfirmed."],null,"","만정유적공원 경기 안성시","gg",""],
+ ["U","의정부 음악정원","야외 피아노","경기 · 의정부시","park","",null,37.72845,127.05382,["의정부 음악정원 소개에 '야외 피아노와 상징 조형물'이라는 한 줄이 있고, 정원 안 어디인지와 날짜는 알 수 없습니다. 실제로 칠 수 있는 피아노인지 조형물인지도 확인되지 않았습니다. 칠 수 있는지는 확인 전입니다.","A description of Uijeongbu Music Garden mentions 'an outdoor piano and a symbolic sculpture' in a single line; the spot and the date are unknown. It is not clear whether this is a playable piano or a sculpture. Whether you can play it is unconfirmed."],null,"","의정부음악도서관 경기 의정부시","gg",""],
+ ["U","제물포지하도상가","중앙무대","인천 · 미추홀구","mall","",2026,37.467,126.65642,["2026년 온라인 연주 가능 장소 목록에 '제물포지하도상가 중앙무대'라고 한 줄 올라 있습니다. 누가 운영하는지, 언제 칠 수 있는지는 알 수 없습니다. 근거가 이 한 줄뿐이라 지금 있는지는 확인 전입니다.","A 2026 online list of places where you can play has a single line: 'central stage, Jemulpo Underground Shopping Center'. Who runs it and when it can be played are unknown. With only that one line of evidence, whether it is there is unconfirmed."],null,"","제물포지하상가관리실 인천 미추홀구","gg",""],
+ ["U","카페윈썸(가평 현리)","Cafe Winsome","경기 · 가평군","cafe","g",2023,37.82057,127.34892,["가평 현리의 카페윈썸 한가운데에 그랜드 피아노와 기타가 놓여 있었다는 2023년 1월 방문 글이 있습니다. 글쓴이도 쳐도 되는지는 몰랐으니 치기 전에 직원에게 먼저 물어보세요. 연주가 허용되는지는 확인 전입니다.","A January 2023 visitor post describes a grand piano and a guitar in the middle of Cafe Winsome in Hyeon-ri, Gapyeong. The writer did not know whether playing was allowed, so ask staff first. Whether guests may play is unconfirmed."],null,"","카페윈썸 경기 가평군","gg",""],
+ ["U","화천읍 중앙로","농협 앞 부스 · 산천어 길거리 피아노","강원 · 화천군","street","",2016,38.10933,127.71001,["화천읍 중앙로 도심 거리 한쪽, 농협 앞 작은 부스에 누구나 자유롭게 치는 '산천어 길거리 피아노'가 설치됐습니다. 근거는 2016년 3월 기사와 2022년 온라인 목록입니다. 지금도 있는지는 확인 전입니다.","The 'Sancheoneo street piano', free for anyone to play, was set up in a small booth in front of the Nonghyup on Jungang-ro in downtown Hwacheon. The evidence is a March 2016 article and a 2022 online list. Whether it still exists is unconfirmed."],null,"","화천 산천어축제 강원 화천군","gg",""],
+ ["U","국립부산과학관","달려라 피아노 · 2016년 설치","부산 · 기장군","culture","u",2016,35.20469,129.21269,["2016년 7월 부산문화재단이 공공장소 8곳에 피아노 8대를 놓을 때 국립부산과학관에도 업라이트 피아노가 설치됐습니다. 과학관 안 어디인지는 알 수 없습니다. 2016년 기사 이후 소식이 없어 지금도 있는지는 확인 전입니다.","Busan National Science Museum received an upright in July 2016, when the Busan Cultural Foundation placed eight pianos in eight public places. Where in the museum it stood is unknown. Nothing has been reported since the 2016 article, so whether it still exists is unconfirmed."],null,"","国立釜山科学館 부산 기장군","bsn",""],
+ ["U","김해 연지공원","Play Me, 피아노 김해 · 설치 예정지","경남 · 김해시","park","u",2026,35.24601,128.869,["김해 연지공원은 2026년 6월 기사에서 '피아노 김해' 업라이트 피아노를 늘려 놓을 예정지로 이름이 올랐습니다. 실제로 설치됐는지, 공원 안 어디인지는 확인되지 않았습니다. 지금 칠 수 있는 피아노가 있는지는 확인 전입니다.","Yeonji Park in Gimhae was named in a June 2026 article as a planned site for the expanded 'Piano Gimhae' uprights. Whether one was actually installed, and where in the park, has not been confirmed. Whether there is a piano to play here is unconfirmed."],null,"","연지공원 경남 김해시","bsn",""],
+ ["U","김해가야테마파크","Play Me, 피아노 김해 · 설치 예정지","경남 · 김해시","other","u",2026,35.25073,128.89308,["김해가야테마파크는 2026년 6월 기사에서 '피아노 김해' 업라이트 피아노를 늘려 놓을 예정지로 이름이 올랐습니다. 실제로 설치됐는지, 파크 안 어디인지는 확인되지 않았습니다. 지금 칠 수 있는 피아노가 있는지는 확인 전입니다.","Gimhae Gaya Theme Park was named in a June 2026 article as a planned site for the expanded 'Piano Gimhae' uprights. Whether one was actually installed, and where in the park, has not been confirmed. Whether there is a piano to play here is unconfirmed."],null,"","김해가야테마파크 경남 김해시","bsn",""],
+ ["U","김해국제공항","달려라 피아노 · 2016년 설치","부산 · 강서구","airport","u",2016,35.17287,128.94718,["2016년 7월 부산문화재단이 공공장소 8곳에 피아노 8대를 놓을 때 김해국제공항에도 업라이트 피아노가 설치됐습니다. 공항 안 어디인지는 알 수 없습니다. 2016년 기사 이후 소식이 없어 지금도 있는지는 확인 전입니다.","Gimhae International Airport received an upright in July 2016, when the Busan Cultural Foundation placed eight pianos in eight public places. Where in the airport it stood is unknown. Nothing has been reported since the 2016 article, so whether it still exists is unconfirmed."],null,"","김해국제공항 부산 강서구","bsn",""],
+ ["U","부산항국제여객터미널","달려라 피아노 · 2016년 설치","부산 · 동구","station","u",2016,35.11555,129.04259,["2016년 7월 부산문화재단이 공공장소 8곳에 피아노 8대를 놓을 때 부산항국제여객터미널에도 업라이트 피아노가 설치됐습니다. 터미널 안 어디인지는 알 수 없습니다. 2016년 기사 이후 소식이 없어 지금도 있는지는 확인 전입니다.","Busan Port International Passenger Terminal received an upright in July 2016, when the Busan Cultural Foundation placed eight pianos in eight public places. Where in the terminal it stood is unknown. Nothing has been reported since the 2016 article, so whether it still exists is unconfirmed."],null,"","부산 부산 동구","bsn",""],
+ ["U","센텀시티역","달려라 피아노 · 2016년 설치","부산 · 해운대구","station","u",2016,35.16892,129.13168,["2016년 7월 부산문화재단이 공공장소 8곳에 피아노 8대를 놓을 때 부산 2호선 센텀시티역에도 업라이트 피아노가 설치됐습니다. 역 안 어디인지는 알 수 없습니다. 2016년 기사 이후 소식이 없어 지금도 있는지는 확인 전입니다.","Centum City Station (Busan Line 2) received an upright in July 2016, when the Busan Cultural Foundation placed eight pianos in eight public places. Where in the station it stood is unknown. Nothing has been reported since the 2016 article, so whether it still exists is unconfirmed."],null,"","센텀시티 부산 해운대구","bsn",""],
+ ["U","신기잡화점(신기산업)","신기산업 내 · 계산대 앞","부산 · 영도구","cafe","",2022,35.08806,129.06094,["부산 영도 신기산업 안 신기잡화점 계산대 앞에 칠 수 있는 피아노가 있다고 2022년 11월 온라인 목록에 올라 있습니다. 가게 안이니 치기 전에 직원에게 먼저 물어보세요. 근거가 이 한 줄뿐이라 지금도 있는지는 확인 전입니다.","A November 2022 online list says there is a playable piano in front of the counter at Sinki Store, inside the Sinki Industry cafe in Yeongdo, Busan. It is inside a shop, so ask staff before playing. With only that one line of evidence, whether it still exists is unconfirmed."],null,"","신기산업 부산 영도구","bsn",""],
+ ["U","태화강 국가정원","느티나무길 피크닉 광장 · 플레이 위드 미","울산 · 중구","park","u",2026,35.54777,129.29622,["정문에서 왕버들마당 쪽 왼편, 느티나무길 주변 피크닉 광장에 2020년 6월 업라이트 길거리 피아노가 놓였습니다. 10~17시(6~9월은 18시까지)에 누구나 칠 수 있고 비가 오면 쉽니다. 피아노 자리에 포토스폿이 생겼다는 말이 있어 지금도 있는지는 확인 전입니다.","An upright street piano was placed in June 2020 in the picnic plaza by the zelkova path at Taehwagang National Garden, on the left as you head from the main gate toward Wangbeodeul Madang. Anyone could play 10:00–17:00 (until 18:00 June–September), except in rain. There is a claim that a photo spot has since taken its place, so whether it is still there is unconfirmed."],null,"","태화강국가정원 울산 중구","bsn",""],
+ ["U","김광석다시그리기길","Kim Kwang-seok Street","대구 · 중구","street","u",2026,35.85997,128.60663,["대구 김광석다시그리기길에 업라이트 피아노 한 대가 있다고 하지만 길 어디쯤인지는 모릅니다. 2026년 온라인 목록에 따르면 음이 심하게 안 맞고 건반 몇 개가 고장 나 상태가 좋지 않습니다. 지금 있는지와 칠 수 있는지는 확인 전입니다.","An upright is said to stand on Kim Kwang-seok Street in Daegu, though where along the street is unknown. According to a 2026 online list it is in poor shape, badly out of tune with several broken keys. Whether it is there and playable is unconfirmed."],null,"","김광석 다시그리기길 대구 중구","dg",""],
+ ["U","광주 예술의 거리","무등갤러리 로비 앞","광주 · 동구","street","u",2015,35.1499,126.9186,["예술의 거리 무등갤러리 로비 앞에 기증받은 업라이트 길거리 피아노가 설치됐고, 연주 시간은 오전 10시~오후 6시였습니다. 근거가 2015년 10월 기사 한 건이고 이후 소식이 없습니다. 지금도 있는지는 확인 전입니다.","A donated upright street piano was installed in front of the Mudeung Gallery lobby on Gwangju Art Street, playable 10:00–18:00. The only evidence is an October 2015 article, with nothing since. Whether it still exists is unconfirmed."],null,"","광주 예술의거리 광주 동구","gj",""],
+ ["U","광주 유스퀘어","던킨도너츠 매장 앞 · 광주종합버스터미널","광주 · 서구","station","",2022,35.16128,126.87988,["광주종합버스터미널 유스퀘어의 던킨도너츠 매장 앞에 개방형 피아노가 있다고 2022년 11월 온라인 목록에 올라 있습니다. 옆 신세계백화점 1층 로비에 있던 그랜드 피아노는 없어졌다고 합니다. 이곳도 지금 있는지는 확인 전입니다.","A November 2022 online list says an open piano stands in front of the Dunkin' Donuts shop at U-Square, the Gwangju bus terminal. The grand piano that used to be in the lobby of the Shinsegae department store next door is reportedly gone. Whether this one still exists is unconfirmed."],null,"","유.스퀘어 광주 서구","gj",""],
+ ["U","국립아시아문화전당","어린이문화원 공원 앞","광주 · 동구","culture","u",2015,35.14672,126.92025,["국립아시아문화전당(ACC) 어린이문화원 공원 앞에 2015년 7월 24시간 개방하는 업라이트 길거리 피아노가 설치됐습니다. 근거가 2015년 10월 기사 한 건이고 이후 소식이 없습니다. 지금도 있는지는 확인 전입니다.","An upright street piano open 24 hours was installed in July 2015 in front of the park by the Children's Culture Center at the Asia Culture Center. The only evidence is an October 2015 article, with nothing since. Whether it still exists is unconfirmed."],null,"","국립아시아문화전당 광주 동구","gj",""],
+ ["U","상무역","레일피아노 · 광주 1호선","광주 · 서구","station","",2020,35.14667,126.84854,["광주 1호선 상무역에 시민 누구나 칠 수 있는 '레일피아노'가 생겼다는 2020년 6월 운영사 이벤트 글이 있습니다. 역 안 어디인지, 늘 놓여 있는 피아노인지는 알 수 없습니다. 지금도 있는지는 확인 전입니다.","A June 2020 event post by the metro operator announced a 'rail piano' at Sangmu Station (Gwangju Line 1) for any citizen to play. Where in the station it is, and whether it was a permanent fixture, are unknown. Whether it still exists is unconfirmed."],null,"","상무역 광주 서구","gj",""],
+ ["U","순천역","역사 내(세부 위치 미상)","전남 · 순천시","station","",2022,34.94544,127.50263,["순천역(전라선·경전선) 역사 안에 칠 수 있는 피아노가 있다고 2022년 11월 온라인 목록에 이름만 올라 있습니다. 역 안 어디인지, 언제 칠 수 있는지는 알 수 없습니다. 근거가 이 한 줄뿐이라 지금도 있는지는 확인 전입니다.","Suncheon Station appears by name only in a November 2022 online list of places where you can play. Where in the station it is and when it can be played are unknown. With only that one line of evidence, whether it still exists is unconfirmed."],null,"","순천역 전남 순천시","gj",""],
+ ["U","전북대 길위에갤러리 레드박스","구정문~신정문 사이 권삼득로","전북 · 전주시","university","u",2022,35.84417,127.12752,["전북대 구정문과 신정문 사이 권삼득로의 길위에갤러리 레드박스에 업라이트 피아노가 있다고 합니다. 상시 개방이고 상태는 수리 여부에 따라 달랐다고 되어 있습니다. 근거가 2022년 11월 온라인 목록뿐이라 지금도 있는지는 확인 전입니다.","An upright is said to be at the JBNU Redbox Gallery on Gwonsamdeuk-ro, between the university's old and new main gates. It is listed as always open, with its condition depending on whether it has been repaired. The only evidence is a November 2022 online list, so whether it still exists is unconfirmed."],null,"","전북대학교 구정문 전북 전주시","gj",""],
+ ["U","전북대학교 구정문 안","'소나무와 나그네' 피아노 · 구정문 70m","전북 · 전주시","university","u",2022,35.84417,127.12752,["전북대 구정문으로 들어가 70m쯤 앞 오른쪽에 '소나무와 나그네'라는 업라이트 피아노가 있다고 합니다. 상시 개방이지만 상태가 좋지 않다고 되어 있습니다. 근거가 2022년 11월 온라인 목록뿐이라 지금도 있는지는 확인 전입니다.","An upright known as 'The Pine and the Wanderer' is said to stand on the right about 70 m inside the old main gate of Jeonbuk National University. It is listed as always open but in poor condition. The only evidence is a November 2022 online list, so whether it still exists is unconfirmed."],null,"","전북대학교 구정문 전북 전주시","gj",""],
+ ["U","청주 성안길 지하상가 외 3곳","오송역·청주공항·수암골 · 리본 프로젝트","충북 · 청주시","street","u",null,36.63683,127.48854,["약 10년 전 전시형 행사로 성안길 지하상가·오송역·청주공항·수암골 4곳에 업라이트 피아노 11대를 놓고 누구나 자유롭게 치게 했습니다. 기사 날짜가 확인되지 않아 4곳을 한 카드로 묶었습니다. 지금 남아 있는지는 확인 전입니다.","Roughly ten years ago an exhibition-style event (the Cheongju Re-born piano project) placed 11 uprights at four sites – Seongan-gil underground arcade, Osong Station, Cheongju Airport and Suamgol – for anyone to play. The article's date is not confirmed, so the four sites share this one card. Whether any remain is unconfirmed."],null,"","지하상가 충북 청주시","cc",""],
+ ["U","충주 용산동 꽃길","충주여고 사거리~용산초 사이","충북 · 충주시","street","",2021,36.96556,127.93994,["충주여고 사거리와 용산초 사이 꽃길에 2021년 10월 길거리 피아노가 놓였고, 오전 10시~오후 6시에 누구나 칠 수 있었습니다. 근거가 설치 당시 기사뿐이고 이후 소식이 없습니다. 지금도 있는지는 확인 전입니다.","A street piano was placed in October 2021 on the flower path between the Chungju Girls' High School intersection and Yongsan Elementary School, open to anyone 10:00–18:00. The only evidence is the installation article, with nothing since. Whether it still exists is unconfirmed."],null,"","충주공업고등학교 충북 충주시","cc",""],
+];
+</script>
+<script>
+const LI = {ko:0,en:1};
+const ZONES = [
+ ["seoul_n",["서울 도심·강북","Seoul · Central & North"],[]],
+ ["seoul_s",["서울 강남·서남","Seoul · South of the river"],[]],
+ ["gg",["경기·인천·강원","Gyeonggi · Incheon · Gangwon"],[]],
+ ["bsn",["부산·울산·경남","Busan · Ulsan · Gyeongnam"],[]],
+ ["dg",["대구·경북","Daegu · Gyeongbuk"],[]],
+ ["gj",["광주·전라·제주","Gwangju · Jeolla · Jeju"],[]],
+ ["cc",["충청·세종·대전","Chungcheong · Sejong · Daejeon"],[]],
+];
+const zoneOf = p => p[13];
+const GL = {S:"S",A:"A",B:"B",C:"C",U:"?"};
+const q = s => document.querySelector(s);
+const state = {grade:"all", zone:"all", lang:"ko", q:"", view:"list", me:null, visits:null};  // 언제 열어도 태국어로 시작
+
+const linkify = t => t.replace(/@([A-Za-z0-9._]+)/g, (m,h)=>`<a href="https://www.instagram.com/${h}" target="_blank" rel="noopener">@${h}</a>`);
+const gmaps = p => "https://www.google.com/maps/search/?api=1&query="+(p[12]?encodeURIComponent(p[12]):p[7]+","+p[8]);
+const u = () => UI[state.lang];
+const li = () => LI[state.lang];
+
+function renderText(){
+  const t=u();
+  document.documentElement.lang = state.lang;
+  q("#h1").innerHTML=t.h1; q("#lede").textContent=t.lede; q("#call").textContent=t.call;
+  q("#ch").textContent=t.ch; q("#cp").textContent=t.cp; q("#cl").innerHTML=[...new Set(P.map(p=>p[11]).filter(Boolean))].map(n=>`<li>${linkify(n)}</li>`).join(""); q("#plotnote").textContent=t.plotnote;
+  { const nu=NEWS.ui[state.lang]||NEWS.ui.en; const show=P.some(isNew); q("#news").hidden=!show; q("#newsh").textContent=nu.h; q("#newsb").textContent=nu.b; q("#newsn").textContent=nu.n; q("#newss").textContent=nu.s||""; }
+  q("#f1").textContent=t.f1; q("#f2").textContent=t.f2; q("#f3").innerHTML=t.f3; q("#f4").textContent=t.f4;
+  q("#legend").innerHTML=["S","A","B","C","U"].map(g=>`<li><span class="tag ${g}">${GL[g]}</span><span>${t.legend[g]}</span></li>`).join("");
+  const c={S:0,A:0,B:0,C:0,U:0}; P.forEach(p=>c[p[0]]++);
+  q("#counts").innerHTML=["S","A","B","C","U"].map(g=>`<button type="button" data-g="${g}"><b>${c[g]}</b>${g==="U"?t.U:t.grade(g)}</button>`).join("");
+  q("#q").placeholder=t.search; q("#empty").textContent=t.none; q("#fab").textContent=t.report;
+  const v=U2(); q("#seg").children[0].textContent=v.list; q("#seg").children[1].textContent=v.mapv; q("#near").textContent=v.near;
+  if(state.visits) q("#counts").insertAdjacentHTML("beforeend",`<span class="vis"><b>${state.visits}</b>${v.visits}</span>`);
+  document.querySelectorAll("#lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.l===state.lang));
+}
+
+function renderFilters(){
+  const t=u(), f=q("#filters");
+  const mk=(k,v,label)=>`<button class="chip" type="button" data-k="${k}" data-v="${v}" aria-pressed="${state[k]===v}">${label}</button>`;
+  f.innerHTML = mk("grade","all",t.all)+mk("grade","S","S")+mk("grade","A","A")+mk("grade","B","B")+mk("grade","C","C")+mk("grade","U",t.U)+(P.some(p=>p[14])?mk("grade","yr",t.yr):"")
+    +`<button class="chip zreset" type="button" data-k="zone" data-v="all" ${state.zone==="all"?"hidden":""}>← ${t.allR}</button>`;
+}
+
+function renderList(){
+  const t=u(), i=li();
+  q("#list").innerHTML = (state.me?[...P].sort((a,b)=>dist(a)-dist(b)):P).map(p=>`
+  <article class="card" id="c${P.indexOf(p)}" data-g="${p[0]}" data-new="0" data-seas="${p[14]?1:0}" data-z="${zoneOf(p)}" data-s="${[p[1],p[2],p[3],ZONES.find(z=>z[0]===zoneOf(p))[1].join(" "),T[p[4]].join(" "),p[9].join(" ")].join(" ").toLowerCase().replace(/"/g,"")}">
+    <span class="tag ${p[0]}">${GL[p[0]]}</span>
+    <div>
+      <h2 class="name">${p[1]}${isNew(p)?'<span class="new">NEW</span>':""}${p[2]?`<span class="th">${p[2]}</span>`:""}</h2>
+      <p class="meta">${state.me?`<span class="dist">${km(p)}</span> · `:""}<span class="gw ${p[0]}">${t.gword[p[0]]}</span> · ${p[3]} · ${T[p[4]][i]}${p[5]?" · "+K[p[5]][i]:""} · ${p[6]?t.seen+p[6]:t.noyear}${p[14]?` · <b class="seas">${t.season}${p[14]}</b>`:""}</p>
+      <a class="map-m" href="${gmaps(p)}" target="_blank" rel="noopener">${t.map}</a>
+      <p class="verdict">${p[9][i]}</p>
+      ${p[11]?`<p class="contrib">${t.contrib} ${linkify(p[11])}</p>`:""}
+    </div>
+    <div class="side">${p[10]?`<button class="ph" type="button" data-full="${p[10][1]}" data-cap="${p[1]}"><img src="${p[10][0]}" alt="${p[1]}" loading="lazy"></button><span class="credit">${t.photo} ${p[10][2]}</span>`:""}<a class="map-d" href="${gmaps(p)}" target="_blank" rel="noopener">${t.map}</a></div>
+  </article>`).join("");
+}
+
+function applyFilter(){
+  const needle=state.q.trim().toLowerCase();
+  const ok=el=>(state.grade==="all"||(state.grade==="yr"?el.dataset.seas==="0":el.dataset.g===state.grade))&&(state.zone==="all"||el.dataset.z===state.zone)&&(!needle||el.dataset.s.includes(needle));
+  let shown=0; document.querySelectorAll(".card").forEach(el=>{ const v=ok(el); el.classList.toggle("hide",!v); if(v) shown++; });
+  q("#empty").hidden = shown>0; q("#rcount").textContent=u().results(shown);
+  const zr=q(".zreset"); if(zr){ zr.hidden = state.zone==="all"; }
+  renderMarkers();
+  document.querySelectorAll(".zone").forEach(el=>{
+    el.setAttribute("aria-pressed", state.zone===el.dataset.z);
+    el.querySelectorAll(".zk .w[data-g]").forEach(d=>d.style.opacity=(state.grade==="all"||state.grade==="yr"||d.dataset.g===state.grade)?1:.25);
+  });
+}
+
+function renderZones(){
+  const i=li(), order={S:0,A:1,B:2,C:3,U:4};
+  const KW=10, H=40;
+  const blackAfter=[0,1,3,4,5];               // 옥타브 안에서 검은건반이 붙는 흰건반 자리 (C D F G A)
+  q("#zones").innerHTML = ZONES.map(z=>{
+    const pts=P.filter(p=>zoneOf(p)===z[0]).sort((a,b)=>order[a[0]]-order[b[0]]);
+    const WHITES=Math.max(14, Math.ceil(pts.length/7)*7);   // 기본 2옥타브, 장소가 넘치면 옥타브 단위로 늘림
+    let k="";
+    for(let w=0; w<WHITES; w++){
+      const p=pts[w];
+      k+=`<rect class="w ${p?p[0]:""}" ${p?`data-g="${p[0]}"`:""} x="${w*KW}" y="0" width="${KW}" height="${H}" rx="1.2">${p?`<title>${p[1]}</title>`:""}</rect>`;
+    }
+    for(let w=0; w<WHITES-1; w++){ if(blackAfter.includes(w%7)) k+=`<rect class="b" x="${(w+1)*KW-3}" y="0" width="6" height="${H*0.6}" rx="1"/>`; }
+    return `<button class="zone" type="button" data-z="${z[0]}" aria-pressed="${state.zone===z[0]}">
+      <span class="zn">${z[1][i]}</span>
+      <span class="zc">${pts.length}</span>
+      <svg class="zk" viewBox="0 0 ${WHITES*KW} ${H}" aria-hidden="true">${k}</svg>
+    </button>`; }).join("");
+}
+
+// ── 지도 탭·내 주변 (GitHub 사이트에서만. claude.ai 미리보기는 바깥 지도·위치를 막는다)
+const LIVE = /github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname);
+const UI2 = {
+ ko:{"list":"목록","mapv":"지도","near":"📍 내 주변","locating":"위치 확인 중…","locErr":"위치를 가져오지 못했습니다. 브라우저에서 위치 권한을 허용해 주세요.","more":"목록에서 보기","visits":"누적 방문"},
+ en:{"list":"List","mapv":"Map","near":"📍 Near me","locating":"Finding you…","locErr":"Could not get your location. Please allow location access in your browser.","more":"Show in list","visits":"visits"}
+};
+const U2 = () => UI2[state.lang];
+const dist = p => { if(!state.me) return 0; const r=x=>x*Math.PI/180, dLa=r(p[7]-state.me.lat), dLo=r(p[8]-state.me.lng);
+  const a=Math.sin(dLa/2)**2+Math.cos(r(state.me.lat))*Math.cos(r(p[7]))*Math.sin(dLo/2)**2; return 12742*Math.asin(Math.sqrt(a)); };
+const km = p => { const d=dist(p); return d<1 ? Math.round(d*100)*10+" m" : (d<10 ? d.toFixed(1) : Math.round(d))+" km"; };
+const visible = () => [...document.querySelectorAll(".card:not(.hide)")].map(el=>P[+el.id.slice(1)]);
+const GCOL = {S:"#B23A2E",A:"#2E6B3E",B:"#9A742A",C:"#5A6470",U:"#8C877F"};
+let map=null, layer=null;
+const loadLeaflet = () => window.L ? Promise.resolve() : new Promise((ok,ng)=>{
+  const c=document.createElement("link"); c.rel="stylesheet"; c.href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"; document.head.appendChild(c);
+  const j=document.createElement("script"); j.src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"; j.onload=ok; j.onerror=ng; document.head.appendChild(j); });
+function popupHtml(p){
+  const t=u(), i=li(), v=p[9][i];
+  return `<div class="pp"><b>${p[1]}</b><div class="pm"><span class="gw ${p[0]}">${t.gword[p[0]]}</span> · ${T[p[4]][i]}${state.me?" · "+km(p):""}</div>`
+    +`${p[10]?`<img src="${p[10][0]}" alt="">`:""}<p>${v.length>140?v.slice(0,140)+"…":v}</p>`
+    +`<div class="pa"><a href="${gmaps(p)}" target="_blank" rel="noopener">${t.map}</a><button type="button" data-goto="${P.indexOf(p)}">${U2().more}</button></div></div>`;
+}
+function renderMarkers(){
+  if(!map) return; layer.clearLayers();
+  const rank={U:0,C:1,B:2,A:3,S:4};                     // 나중에 그린 핀이 위로 — S가 맨 위
+  visible().sort((a,b)=>rank[a[0]]-rank[b[0]]).forEach(p=>L.circleMarker([p[7],p[8]],{
+    radius:p[0]==="S"?10:p[0]==="U"?6:8, color:"#fff", weight:2, fillColor:GCOL[p[0]], fillOpacity:p[0]==="U"?.6:.95
+  }).bindPopup(()=>popupHtml(p),{maxWidth:260}).addTo(layer));
+  if(state.me) L.circleMarker([state.me.lat,state.me.lng],{radius:7,color:"#fff",weight:3,fillColor:"#2B6CB0",fillOpacity:1}).addTo(layer);
+}
+function fitView(){
+  if(!map) return; const vis=visible();
+  if(state.me){ const near=[...vis].sort((a,b)=>dist(a)-dist(b)).slice(0,5);
+    map.fitBounds(L.latLngBounds([[state.me.lat,state.me.lng],...near.map(p=>[p[7],p[8]])]),{padding:[30,30],maxZoom:15}); return; }
+  let pts=vis; 
+  if(pts.length) map.fitBounds(L.latLngBounds(pts.map(p=>[p[7],p[8]])),{padding:[30,30],maxZoom:15});
+}
+async function setView(v){
+  state.view=v; q("#list").hidden=v==="map"; q("#map").hidden=v!=="map";
+  [...q("#seg").children].forEach(b=>b.setAttribute("aria-pressed", b.dataset.v===v));
+  if(v!=="map") return;
+  try{ await loadLeaflet(); }catch(e){ setView("list"); return; }
+  if(!map){ map=L.map("map",{scrollWheelZoom:false});
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,                // 키 없는 OSM 기본 타일 (CARTO는 키 필요해짐)
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+    layer=L.layerGroup().addTo(map); }
+  map.invalidateSize(); renderMarkers(); fitView();
+}
+function locate(){
+  const m=q("#locmsg");
+  if(state.me){ state.me=null; m.textContent=""; q("#near").setAttribute("aria-pressed",false); renderList(); applyFilter(); fitView(); return; }
+  if(!navigator.geolocation){ m.textContent=U2().locErr; return; }
+  m.textContent=U2().locating;
+  navigator.geolocation.getCurrentPosition(pos=>{
+    state.me={lat:pos.coords.latitude,lng:pos.coords.longitude}; m.textContent=""; q("#near").setAttribute("aria-pressed",true);
+    renderList(); applyFilter(); fitView(); q("#bar").scrollIntoView({behavior:"smooth",block:"start"});
+  }, ()=>{ m.textContent=U2().locErr; }, {timeout:10000, maximumAge:300000});
+}
+if(LIVE){
+  q("#vrow").hidden=false;
+  q("#seg").onclick=e=>{ const b=e.target.closest("button"); if(b) setView(b.dataset.v); };
+  q("#near").onclick=locate;
+  q("#map").addEventListener("click",e=>{ const b=e.target.closest("[data-goto]"); if(!b) return;
+    setView("list"); const c=q("#c"+b.dataset.goto); c.scrollIntoView({behavior:"smooth",block:"center"}); c.classList.remove("flash"); void c.offsetWidth; c.classList.add("flash"); });
+}
+
+// ── 누적 방문 (GoatCounter). 코드를 넣으면 켜지고, GC_MIN 이상일 때만 보인다
+const GC_CODE = "", GC_MIN = 300;
+const GC_BASE = 1340;   // GoatCounter 시작 전 Cloudflare 누적 방문 — 시작일 기준 숫자로 맞출 것
+if(GC_CODE && location.hostname.endsWith("github.io")){
+  const g=document.createElement("script"); g.async=true; g.src="https://gc.zgo.at/count.js"; g.dataset.goatcounter=`https://${GC_CODE}.goatcounter.com/count`; document.body.appendChild(g);
+  fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`).then(r=>r.ok?r.json():null).then(j=>{
+    const n=j ? GC_BASE + +String(j.count).replace(/\D/g,"") : 0;
+    if(n<GC_MIN) return; const t0=performance.now();
+    const step=now=>{ const k=Math.min(1,(now-t0)/900); state.visits=Math.round(n*(1-(1-k)**3)).toLocaleString("en-US"); renderText(); if(k<1) requestAnimationFrame(step); };
+    requestAnimationFrame(step); }).catch(()=>{});
+}
+
+function renderAll(){ renderText(); renderFilters(); renderZones(); renderList(); applyFilter(); }
+q("#lang").onclick=e=>{ const b=e.target.closest("button"); if(!b) return; state.lang=b.dataset.l; renderAll(); };
+q("#filters").onclick=e=>{ const b=e.target.closest(".chip"); if(!b) return; state[b.dataset.k]=b.dataset.v; if(b.dataset.k==="grade"&&b.dataset.v==="all") state.zone="all"; renderFilters(); applyFilter(); };
+q("#q").oninput=e=>{ state.q=e.target.value; applyFilter(); };
+q("#counts").onclick=e=>{ const b=e.target.closest("button"); if(!b) return; state.grade=b.dataset.g; renderFilters(); applyFilter(); q("#bar").scrollIntoView({behavior:"smooth",block:"start"}); };
+const toContact=()=>q("#contribs").scrollIntoView({behavior:"smooth",block:"start"});
+q("#fab").onclick=toContact; q("#call").onclick=toContact;
+q("#zones").onclick=e=>{ const b=e.target.closest(".zone"); if(!b) return; state.zone = state.zone===b.dataset.z ? "all" : b.dataset.z; applyFilter(); fitView(); };
+q("#list").onclick=e=>{ const b=e.target.closest(".ph"); if(!b) return; q("#lbimg").src=b.dataset.full; q("#lbimg").alt=b.dataset.cap; q("#lbcap").textContent=b.dataset.cap; q("#lb").hidden=false; };
+q("#lb").onclick=()=>{ q("#lb").hidden=true; q("#lbimg").src=""; };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ q("#lb").hidden=true; } });
+renderAll();
+</script>
+
+</body>
+</html>
