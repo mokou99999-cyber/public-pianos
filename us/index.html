@@ -648,7 +648,7 @@ function fitView(){
   if(!map) return; const vis=visible();
   if(state.me){ const near=[...vis].sort((a,b)=>dist(a)-dist(b)).slice(0,5);
     map.fitBounds(L.latLngBounds([[state.me.lat,state.me.lng],...near.map(p=>[p[7],p[8]])]),{padding:[30,30],maxZoom:15}); return; }
-  let pts=vis; 
+  let pts=vis; if(state.zone==="all"){ const core=vis.filter(p=>p[8]>-126&&p[7]<50); if(core.length) pts=core; }
   if(pts.length) map.fitBounds(L.latLngBounds(pts.map(p=>[p[7],p[8]])),{padding:[30,30],maxZoom:15});
 }
 async function setView(v){
